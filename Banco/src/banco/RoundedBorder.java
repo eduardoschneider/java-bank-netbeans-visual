@@ -1,0 +1,49 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package banco;
+
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Insets;
+import javax.swing.border.Border;
+
+/**
+ *
+ * @author eduardo.schneider
+ */
+public class RoundedBorder implements Border {
+
+    private final int radius;
+
+
+    public RoundedBorder(int radius) {
+        this.radius = radius;
+    }
+
+
+    @Override
+    public Insets getBorderInsets(Component c) {
+        return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
+    }
+
+    @Override
+    public boolean isBorderOpaque() {
+        return false;
+    }
+
+
+    @Override
+    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+        g.drawRoundRect(x, y, width-1, height-1, radius, radius);
+        g.drawRoundRect(x, y, width-2, height-2, radius, radius);
+        g.drawRoundRect(x+1, y+2, width, height, radius, radius);
+        g.drawRoundRect(x, y, width, height, radius, radius);
+        g.drawRoundRect(x+1, y+1, width, height, radius, radius);
+        
+        
+
+    }
+}
