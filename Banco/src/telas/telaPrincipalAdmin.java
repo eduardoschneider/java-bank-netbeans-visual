@@ -43,23 +43,24 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        btnInvestimentos3 = new javax.swing.JButton();
-        btnAvancarODia1 = new javax.swing.JButton();
-        btnPesquisaClientes4 = new javax.swing.JButton();
-        btnCadastroCliente4 = new javax.swing.JButton();
-        btnInvestimentos4 = new javax.swing.JButton();
-        btnCadastroCliente5 = new javax.swing.JButton();
-        btnPesquisaClientes5 = new javax.swing.JButton();
-        btnInvestimentos5 = new javax.swing.JButton();
-        btnInvestimentos2 = new javax.swing.JButton();
-        btnInvestimentos1 = new javax.swing.JButton();
-        btnCadastroCliente3 = new javax.swing.JButton();
-        btnPesquisaClientes2 = new javax.swing.JButton();
+        btnAddPoupanca = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
+        btnEXTRA = new javax.swing.JButton();
+        btnPesquisaConta = new javax.swing.JButton();
+        btnExcluirConta = new javax.swing.JButton();
+        btnAddCdb = new javax.swing.JButton();
+        btnCadastroConta = new javax.swing.JButton();
+        btnAlterarConta = new javax.swing.JButton();
+        btnAddInvestimento = new javax.swing.JButton();
+        btnPoupanca = new javax.swing.JButton();
+        btnCdb = new javax.swing.JButton();
+        btnExcluirCliente = new javax.swing.JButton();
+        btnPesquisaCliente = new javax.swing.JButton();
         btnCadastroCliente = new javax.swing.JButton();
         btnInvestimentos = new javax.swing.JButton();
         lblInvestimentos = new javax.swing.JLabel();
         btnAvancarODia = new javax.swing.JButton();
-        btnPesquisaClientes = new javax.swing.JButton();
+        btnAlterarClientes = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         fundo = new javax.swing.JLabel();
 
@@ -87,185 +88,188 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         jLabel1.setText("CLIENTE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 110, 30));
 
-        btnInvestimentos3.setBackground(new java.awt.Color(204, 255, 204));
-        btnInvestimentos3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnInvestimentos3.setForeground(new java.awt.Color(0, 102, 51));
-        btnInvestimentos3.setText("+");
-        btnInvestimentos3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAddPoupanca.setBackground(new java.awt.Color(204, 255, 204));
+        btnAddPoupanca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAddPoupanca.setForeground(new java.awt.Color(0, 102, 51));
+        btnAddPoupanca.setText("+");
+        btnAddPoupanca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnInvestimentos3MouseEntered(evt);
+                btnAddPoupancaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnInvestimentos3MouseExited(evt);
+                btnAddPoupancaMouseExited(evt);
             }
         });
-        jPanel1.add(btnInvestimentos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 50, 86));
+        jPanel1.add(btnAddPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 50, 86));
 
-        btnAvancarODia1.setBackground(new java.awt.Color(255, 255, 255));
-        btnAvancarODia1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnAvancarODia1.setText("Avançar o Dia");
-        btnAvancarODia1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAvancarODia1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAvancarODia1MouseExited(evt);
-            }
-        });
-        jPanel1.add(btnAvancarODia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 350, 50));
+        jSpinner1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jSpinner1.setToolTipText("x");
+        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 90, 50));
 
-        btnPesquisaClientes4.setBackground(new java.awt.Color(255, 255, 255));
-        btnPesquisaClientes4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnPesquisaClientes4.setText("Pesquisa");
-        btnPesquisaClientes4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEXTRA.setBackground(new java.awt.Color(255, 255, 255));
+        btnEXTRA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnEXTRA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPesquisaClientes4MouseEntered(evt);
+                btnEXTRAMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPesquisaClientes4MouseExited(evt);
+                btnEXTRAMouseExited(evt);
             }
         });
-        jPanel1.add(btnPesquisaClientes4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 110, 86));
+        jPanel1.add(btnEXTRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 350, 50));
 
-        btnCadastroCliente4.setBackground(new java.awt.Color(255, 255, 255));
-        btnCadastroCliente4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnCadastroCliente4.setText("Excluir");
-        btnCadastroCliente4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPesquisaConta.setBackground(new java.awt.Color(255, 255, 255));
+        btnPesquisaConta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnPesquisaConta.setText("Pesquisa");
+        btnPesquisaConta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCadastroCliente4MouseEntered(evt);
+                btnPesquisaContaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCadastroCliente4MouseExited(evt);
+                btnPesquisaContaMouseExited(evt);
             }
         });
-        btnCadastroCliente4.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(btnPesquisaConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 110, 86));
+
+        btnExcluirConta.setBackground(new java.awt.Color(255, 255, 255));
+        btnExcluirConta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnExcluirConta.setText("Excluir");
+        btnExcluirConta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExcluirContaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExcluirContaMouseExited(evt);
+            }
+        });
+        btnExcluirConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroCliente4ActionPerformed(evt);
+                btnExcluirContaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadastroCliente4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 110, 86));
+        jPanel1.add(btnExcluirConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 110, 86));
 
-        btnInvestimentos4.setBackground(new java.awt.Color(204, 255, 204));
-        btnInvestimentos4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnInvestimentos4.setForeground(new java.awt.Color(0, 102, 51));
-        btnInvestimentos4.setText("+");
-        btnInvestimentos4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAddCdb.setBackground(new java.awt.Color(204, 255, 204));
+        btnAddCdb.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAddCdb.setForeground(new java.awt.Color(0, 102, 51));
+        btnAddCdb.setText("+");
+        btnAddCdb.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnInvestimentos4MouseEntered(evt);
+                btnAddCdbMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnInvestimentos4MouseExited(evt);
+                btnAddCdbMouseExited(evt);
             }
         });
-        jPanel1.add(btnInvestimentos4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 116, 50, 110));
+        jPanel1.add(btnAddCdb, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 116, 50, 110));
 
-        btnCadastroCliente5.setBackground(new java.awt.Color(255, 255, 255));
-        btnCadastroCliente5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnCadastroCliente5.setText("Cadastrar");
-        btnCadastroCliente5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCadastroConta.setBackground(new java.awt.Color(255, 255, 255));
+        btnCadastroConta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnCadastroConta.setText("Cadastrar");
+        btnCadastroConta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCadastroCliente5MouseEntered(evt);
+                btnCadastroContaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCadastroCliente5MouseExited(evt);
+                btnCadastroContaMouseExited(evt);
             }
         });
-        btnCadastroCliente5.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastroConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroCliente5ActionPerformed(evt);
+                btnCadastroContaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadastroCliente5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 110, 86));
+        jPanel1.add(btnCadastroConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 110, 86));
 
-        btnPesquisaClientes5.setBackground(new java.awt.Color(255, 255, 255));
-        btnPesquisaClientes5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnPesquisaClientes5.setText("Alterar");
-        btnPesquisaClientes5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAlterarConta.setBackground(new java.awt.Color(255, 255, 255));
+        btnAlterarConta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAlterarConta.setText("Alterar");
+        btnAlterarConta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPesquisaClientes5MouseEntered(evt);
+                btnAlterarContaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPesquisaClientes5MouseExited(evt);
+                btnAlterarContaMouseExited(evt);
             }
         });
-        jPanel1.add(btnPesquisaClientes5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 110, 86));
+        jPanel1.add(btnAlterarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 110, 86));
 
-        btnInvestimentos5.setBackground(new java.awt.Color(204, 255, 204));
-        btnInvestimentos5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnInvestimentos5.setForeground(new java.awt.Color(0, 102, 51));
-        btnInvestimentos5.setText("+");
-        btnInvestimentos5.setAlignmentX(0.5F);
-        btnInvestimentos5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAddInvestimento.setBackground(new java.awt.Color(204, 255, 204));
+        btnAddInvestimento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAddInvestimento.setForeground(new java.awt.Color(0, 102, 51));
+        btnAddInvestimento.setText("+");
+        btnAddInvestimento.setAlignmentX(0.5F);
+        btnAddInvestimento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnInvestimentos5MouseEntered(evt);
+                btnAddInvestimentoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnInvestimentos5MouseExited(evt);
+                btnAddInvestimentoMouseExited(evt);
             }
         });
-        btnInvestimentos5.addActionListener(new java.awt.event.ActionListener() {
+        btnAddInvestimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInvestimentos5ActionPerformed(evt);
+                btnAddInvestimentoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInvestimentos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 50, 86));
+        jPanel1.add(btnAddInvestimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 50, 86));
 
-        btnInvestimentos2.setBackground(new java.awt.Color(255, 255, 255));
-        btnInvestimentos2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnInvestimentos2.setText("Poupança");
-        btnInvestimentos2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPoupanca.setBackground(new java.awt.Color(255, 255, 255));
+        btnPoupanca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPoupanca.setText("Poupança");
+        btnPoupanca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnInvestimentos2MouseEntered(evt);
+                btnPoupancaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnInvestimentos2MouseExited(evt);
+                btnPoupancaMouseExited(evt);
             }
         });
-        jPanel1.add(btnInvestimentos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 310, 86));
+        jPanel1.add(btnPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 310, 86));
 
-        btnInvestimentos1.setBackground(new java.awt.Color(255, 255, 255));
-        btnInvestimentos1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnInvestimentos1.setText("CDB");
-        btnInvestimentos1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCdb.setBackground(new java.awt.Color(255, 255, 255));
+        btnCdb.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnCdb.setText("CDB");
+        btnCdb.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnInvestimentos1MouseEntered(evt);
+                btnCdbMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnInvestimentos1MouseExited(evt);
+                btnCdbMouseExited(evt);
             }
         });
-        jPanel1.add(btnInvestimentos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 116, 120, 110));
+        jPanel1.add(btnCdb, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 116, 120, 110));
 
-        btnCadastroCliente3.setBackground(new java.awt.Color(255, 255, 255));
-        btnCadastroCliente3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnCadastroCliente3.setText("Excluir");
-        btnCadastroCliente3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnExcluirCliente.setBackground(new java.awt.Color(255, 255, 255));
+        btnExcluirCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnExcluirCliente.setText("Excluir");
+        btnExcluirCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCadastroCliente3MouseEntered(evt);
+                btnExcluirClienteMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCadastroCliente3MouseExited(evt);
+                btnExcluirClienteMouseExited(evt);
             }
         });
-        btnCadastroCliente3.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroCliente3ActionPerformed(evt);
+                btnExcluirClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadastroCliente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 86));
+        jPanel1.add(btnExcluirCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 86));
 
-        btnPesquisaClientes2.setBackground(new java.awt.Color(255, 255, 255));
-        btnPesquisaClientes2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnPesquisaClientes2.setText("Pesquisa");
-        btnPesquisaClientes2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPesquisaCliente.setBackground(new java.awt.Color(255, 255, 255));
+        btnPesquisaCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnPesquisaCliente.setText("Pesquisa");
+        btnPesquisaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPesquisaClientes2MouseEntered(evt);
+                btnPesquisaClienteMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPesquisaClientes2MouseExited(evt);
+                btnPesquisaClienteMouseExited(evt);
             }
         });
-        jPanel1.add(btnPesquisaClientes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 110, 86));
+        jPanel1.add(btnPesquisaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 110, 86));
 
         btnCadastroCliente.setBackground(new java.awt.Color(255, 255, 255));
         btnCadastroCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -314,20 +318,20 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
                 btnAvancarODiaMouseExited(evt);
             }
         });
-        jPanel1.add(btnAvancarODia, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 350, 50));
+        jPanel1.add(btnAvancarODia, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 300, 50));
 
-        btnPesquisaClientes.setBackground(new java.awt.Color(255, 255, 255));
-        btnPesquisaClientes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnPesquisaClientes.setText("Alterar");
-        btnPesquisaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAlterarClientes.setBackground(new java.awt.Color(255, 255, 255));
+        btnAlterarClientes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAlterarClientes.setText("Alterar");
+        btnAlterarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPesquisaClientesMouseEntered(evt);
+                btnAlterarClientesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPesquisaClientesMouseExited(evt);
+                btnAlterarClientesMouseExited(evt);
             }
         });
-        jPanel1.add(btnPesquisaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 110, 86));
+        jPanel1.add(btnAlterarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 110, 86));
 
         btnVoltar.setBackground(new java.awt.Color(255, 255, 255));
         btnVoltar.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -343,7 +347,7 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
                 btnVoltarMouseExited(evt);
             }
         });
-        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 250, 110));
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 260, 110));
 
         fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/112_hard.jpg"))); // NOI18N
         jPanel1.add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 660, 460));
@@ -363,15 +367,15 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         btnCadastroCliente.setForeground(Color.black);
     }//GEN-LAST:event_btnCadastroClienteMouseExited
 
-    private void btnPesquisaClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClientesMouseEntered
-        btnPesquisaClientes.setBackground(Color.black);
-        btnPesquisaClientes.setForeground(Color.white);
-    }//GEN-LAST:event_btnPesquisaClientesMouseEntered
+    private void btnAlterarClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarClientesMouseEntered
+        btnAlterarClientes.setBackground(Color.black);
+        btnAlterarClientes.setForeground(Color.white);
+    }//GEN-LAST:event_btnAlterarClientesMouseEntered
 
-    private void btnPesquisaClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClientesMouseExited
-        btnPesquisaClientes.setBackground(Color.white);
-        btnPesquisaClientes.setForeground(Color.black);
-    }//GEN-LAST:event_btnPesquisaClientesMouseExited
+    private void btnAlterarClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarClientesMouseExited
+        btnAlterarClientes.setBackground(Color.white);
+        btnAlterarClientes.setForeground(Color.black);
+    }//GEN-LAST:event_btnAlterarClientesMouseExited
 
     private void btnInvestimentosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentosMouseEntered
         btnInvestimentos.setBackground(Color.black);
@@ -412,145 +416,146 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         new telaDeLogin().setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void btnCadastroCliente3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroCliente3MouseEntered
+    private void btnExcluirClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirClienteMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroCliente3MouseEntered
+    }//GEN-LAST:event_btnExcluirClienteMouseEntered
 
-    private void btnCadastroCliente3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroCliente3MouseExited
+    private void btnExcluirClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirClienteMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroCliente3MouseExited
+    }//GEN-LAST:event_btnExcluirClienteMouseExited
 
-    private void btnCadastroCliente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroCliente3ActionPerformed
+    private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroCliente3ActionPerformed
+    }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
-    private void btnPesquisaClientes2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClientes2MouseEntered
+    private void btnPesquisaClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClienteMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisaClientes2MouseEntered
+    }//GEN-LAST:event_btnPesquisaClienteMouseEntered
 
-    private void btnPesquisaClientes2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClientes2MouseExited
+    private void btnPesquisaClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClienteMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisaClientes2MouseExited
+    }//GEN-LAST:event_btnPesquisaClienteMouseExited
 
-    private void btnInvestimentos1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos1MouseEntered
+    private void btnCdbMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCdbMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnInvestimentos1MouseEntered
+    }//GEN-LAST:event_btnCdbMouseEntered
 
-    private void btnInvestimentos1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos1MouseExited
+    private void btnCdbMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCdbMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnInvestimentos1MouseExited
+    }//GEN-LAST:event_btnCdbMouseExited
 
-    private void btnInvestimentos2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos2MouseEntered
+    private void btnPoupancaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPoupancaMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnInvestimentos2MouseEntered
+    }//GEN-LAST:event_btnPoupancaMouseEntered
 
-    private void btnInvestimentos2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos2MouseExited
+    private void btnPoupancaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPoupancaMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnInvestimentos2MouseExited
+    }//GEN-LAST:event_btnPoupancaMouseExited
 
-    private void btnPesquisaClientes4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClientes4MouseEntered
+    private void btnPesquisaContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaContaMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisaClientes4MouseEntered
+    }//GEN-LAST:event_btnPesquisaContaMouseEntered
 
-    private void btnPesquisaClientes4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClientes4MouseExited
+    private void btnPesquisaContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaContaMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisaClientes4MouseExited
+    }//GEN-LAST:event_btnPesquisaContaMouseExited
 
-    private void btnCadastroCliente4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroCliente4MouseEntered
+    private void btnExcluirContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirContaMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroCliente4MouseEntered
+    }//GEN-LAST:event_btnExcluirContaMouseEntered
 
-    private void btnCadastroCliente4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroCliente4MouseExited
+    private void btnExcluirContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirContaMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroCliente4MouseExited
+    }//GEN-LAST:event_btnExcluirContaMouseExited
 
-    private void btnCadastroCliente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroCliente4ActionPerformed
+    private void btnExcluirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirContaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroCliente4ActionPerformed
+    }//GEN-LAST:event_btnExcluirContaActionPerformed
 
-    private void btnCadastroCliente5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroCliente5MouseEntered
+    private void btnCadastroContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroContaMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroCliente5MouseEntered
+    }//GEN-LAST:event_btnCadastroContaMouseEntered
 
-    private void btnCadastroCliente5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroCliente5MouseExited
+    private void btnCadastroContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroContaMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroCliente5MouseExited
+    }//GEN-LAST:event_btnCadastroContaMouseExited
 
-    private void btnCadastroCliente5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroCliente5ActionPerformed
+    private void btnCadastroContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroContaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroCliente5ActionPerformed
+    }//GEN-LAST:event_btnCadastroContaActionPerformed
 
-    private void btnPesquisaClientes5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClientes5MouseEntered
+    private void btnAlterarContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarContaMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisaClientes5MouseEntered
+    }//GEN-LAST:event_btnAlterarContaMouseEntered
 
-    private void btnPesquisaClientes5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClientes5MouseExited
+    private void btnAlterarContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarContaMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisaClientes5MouseExited
+    }//GEN-LAST:event_btnAlterarContaMouseExited
 
-    private void btnAvancarODia1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvancarODia1MouseEntered
+    private void btnEXTRAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEXTRAMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAvancarODia1MouseEntered
+    }//GEN-LAST:event_btnEXTRAMouseEntered
 
-    private void btnAvancarODia1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvancarODia1MouseExited
+    private void btnEXTRAMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEXTRAMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAvancarODia1MouseExited
+    }//GEN-LAST:event_btnEXTRAMouseExited
 
-    private void btnInvestimentos3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos3MouseEntered
-        btnInvestimentos3.setBackground(Color.green);
-    }//GEN-LAST:event_btnInvestimentos3MouseEntered
+    private void btnAddPoupancaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPoupancaMouseEntered
+        btnAddPoupanca.setBackground(Color.green);
+    }//GEN-LAST:event_btnAddPoupancaMouseEntered
 
-    private void btnInvestimentos3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos3MouseExited
-        btnInvestimentos3.setBackground(new Color(204, 255, 204));
-    }//GEN-LAST:event_btnInvestimentos3MouseExited
+    private void btnAddPoupancaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPoupancaMouseExited
+        btnAddPoupanca.setBackground(new Color(204, 255, 204));
+    }//GEN-LAST:event_btnAddPoupancaMouseExited
 
-    private void btnInvestimentos4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos4MouseEntered
-        btnInvestimentos4.setBackground(Color.green);
-    }//GEN-LAST:event_btnInvestimentos4MouseEntered
+    private void btnAddCdbMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCdbMouseEntered
+        btnAddCdb.setBackground(Color.green);
+    }//GEN-LAST:event_btnAddCdbMouseEntered
 
-    private void btnInvestimentos4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos4MouseExited
-        btnInvestimentos4.setBackground(new Color(204, 255, 204));
-    }//GEN-LAST:event_btnInvestimentos4MouseExited
+    private void btnAddCdbMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCdbMouseExited
+        btnAddCdb.setBackground(new Color(204, 255, 204));
+    }//GEN-LAST:event_btnAddCdbMouseExited
 
-    private void btnInvestimentos5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos5MouseEntered
-        btnInvestimentos5.setBackground(Color.green);
-    }//GEN-LAST:event_btnInvestimentos5MouseEntered
+    private void btnAddInvestimentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddInvestimentoMouseEntered
+        btnAddInvestimento.setBackground(Color.green);
+    }//GEN-LAST:event_btnAddInvestimentoMouseEntered
 
-    private void btnInvestimentos5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvestimentos5MouseExited
-        btnInvestimentos5.setBackground(new Color(204, 255, 204));
-    }//GEN-LAST:event_btnInvestimentos5MouseExited
+    private void btnAddInvestimentoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddInvestimentoMouseExited
+        btnAddInvestimento.setBackground(new Color(204, 255, 204));
+    }//GEN-LAST:event_btnAddInvestimentoMouseExited
 
-    private void btnInvestimentos5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvestimentos5ActionPerformed
+    private void btnAddInvestimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddInvestimentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnInvestimentos5ActionPerformed
+    }//GEN-LAST:event_btnAddInvestimentoActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddCdb;
+    private javax.swing.JButton btnAddInvestimento;
+    private javax.swing.JButton btnAddPoupanca;
+    private javax.swing.JButton btnAlterarClientes;
+    private javax.swing.JButton btnAlterarConta;
     private javax.swing.JButton btnAvancarODia;
-    private javax.swing.JButton btnAvancarODia1;
     private javax.swing.JButton btnCadastroCliente;
-    private javax.swing.JButton btnCadastroCliente3;
-    private javax.swing.JButton btnCadastroCliente4;
-    private javax.swing.JButton btnCadastroCliente5;
+    private javax.swing.JButton btnCadastroConta;
+    private javax.swing.JButton btnCdb;
+    private javax.swing.JButton btnEXTRA;
+    private javax.swing.JButton btnExcluirCliente;
+    private javax.swing.JButton btnExcluirConta;
     private javax.swing.JButton btnInvestimentos;
-    private javax.swing.JButton btnInvestimentos1;
-    private javax.swing.JButton btnInvestimentos2;
-    private javax.swing.JButton btnInvestimentos3;
-    private javax.swing.JButton btnInvestimentos4;
-    private javax.swing.JButton btnInvestimentos5;
-    private javax.swing.JButton btnPesquisaClientes;
-    private javax.swing.JButton btnPesquisaClientes2;
-    private javax.swing.JButton btnPesquisaClientes4;
-    private javax.swing.JButton btnPesquisaClientes5;
+    private javax.swing.JButton btnPesquisaCliente;
+    private javax.swing.JButton btnPesquisaConta;
+    private javax.swing.JButton btnPoupanca;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel fundo;
     private javax.swing.JLabel fundo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblInvestimentos;
     // End of variables declaration//GEN-END:variables
 }

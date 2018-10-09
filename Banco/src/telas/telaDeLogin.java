@@ -171,7 +171,7 @@ public class telaDeLogin extends javax.swing.JFrame {
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
         this.setVisible(false);
-        new telaPrincipalAdmin().setVisible(true);
+        new telaPrincipalUsuario().setVisible(true);
     }//GEN-LAST:event_btnEntrarMouseClicked
        
     /**
