@@ -384,7 +384,12 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarMouseExited
 
     private void btnDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositoActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        try {
+            new telaDeDeposito().setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnDepositoActionPerformed
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
