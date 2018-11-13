@@ -27,7 +27,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         this.setBackground(new Color(0,0,0,0));
         initComponents();
         setLocationRelativeTo(null); //abre a tela no centro
-        
     }
 
     /**

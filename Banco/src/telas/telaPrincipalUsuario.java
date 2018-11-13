@@ -5,16 +5,16 @@
  */
 package telas;
 
-import banco.RoundedBorder;
+import conexao.ConnectionFactory;
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 /**
  *
  * @author eduardo.schneider
@@ -24,13 +24,14 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
     /**
      * Creates new form telaPrincipalUsuario
      */
-    public telaPrincipalUsuario() {
+    public telaPrincipalUsuario() throws SQLException, ClassNotFoundException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
         this.setUndecorated(true);
         this.setBackground(new Color(0,0,0,0));
         initComponents();
         setLocationRelativeTo(null); //abre a tela no centro
-        
+        ConnectionFactory con = new ConnectionFactory();
+        con.conectar();        
     }
 
     /**
