@@ -6,6 +6,14 @@
 package banco;
 
 import static banco.Helper.clearScreen;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +31,7 @@ public class Cliente {
     private String nomeCliente;
     private String cpfCliente;
     private Date dataNasc;
+    public static Cliente logado = null;
 
     public Cliente(int idCliente, String nomeCliente, String cpfCliente, Date dataNasc) {
         this.idCliente = idCliente;
@@ -90,64 +99,64 @@ public class Cliente {
         return cliente;
     }
     
-    public static void excluirCliente(List<Cliente> clientes, List<Conta> contas) throws InterruptedException{
-        System.out.println("Digite o CPF do cliente que deseja excluir:\n");
-        Scanner leitor = new Scanner(System.in);
-        String cpf = leitor.next();
-        boolean achouCliente = false;
-        boolean achouConta = false;
-        for (Cliente c : clientes){
-            if ((c.getCpfCliente()).equals(cpf)){
-                achouCliente = true;
-                for (Conta co : contas){
-                    if (((co.getCliente().getCpfCliente())).equals(cpf)){
-                        System.out.println("NOME:" + co.getCliente().getNomeCliente());
-                        System.out.println("CPF:" + co.getCliente().getCpfCliente());
-                        
-                        achouConta = true;
-                    }
-                }
-            }
-        }
-        if (achouConta){
-            System.out.println("Cliente possui conta, deseja excluir ambos? (S/N)");
-            String resposta = leitor.next();
-            
-            if((resposta.equals("s")) || (resposta.equals("S")) || (resposta.equals("sim")) || (resposta.equals("SIM"))){
-                for (Iterator<Conta> iter = contas.listIterator(); iter.hasNext(); ) {
-                    Conta a = iter.next();
-                    if (((a.getCliente().getCpfCliente())).equals(cpf)) {
-                        iter.remove();
-                    }
-                }
-                
-                for (Iterator<Cliente> iter = clientes.listIterator(); iter.hasNext(); ) {
-                    Cliente a = iter.next();
-                    if ((a.getCpfCliente()).equals(cpf)) {
-                        iter.remove();
-                    }
-                }
-                System.out.println("Cliente e Contas excluídos com sucesso!");
-            }
-            else {
-                System.out.println("Você não pode excluir um cliente sem excluir a conta também.");
-            }            
-        } else if (achouCliente && !achouConta){
-            System.out.println("Cliente encontrado, e não possui conta, deseja excluir? (S/N)");
-            String resposta = leitor.next();
-            
-            if((resposta.equals("s")) || (resposta.equals("S")) || (resposta.equals("sim")) || (resposta.equals("SIM"))){
-                for (Iterator<Cliente> iter = clientes.listIterator(); iter.hasNext(); ) {
-                    Cliente a = iter.next();
-                    if ((a.getCpfCliente()).equals(cpf)) {
-                        iter.remove();
-                    }
-                }
-            }
-        }
-        
-        Thread.sleep(1500);
-    }
+//    public static void excluirCliente(List<Cliente> clientes, List<Conta> contas) throws InterruptedException{
+//        System.out.println("Digite o CPF do cliente que deseja excluir:\n");
+//        Scanner leitor = new Scanner(System.in);
+//        String cpf = leitor.next();
+//        boolean achouCliente = false;
+//        boolean achouConta = false;
+//        for (Cliente c : clientes){
+//            if ((c.getCpfCliente()).equals(cpf)){
+//                achouCliente = true;
+//                for (Conta co : contas){
+//                    if (((co.getCliente().getCpfCliente())).equals(cpf)){
+//                        System.out.println("NOME:" + co.getCliente().getNomeCliente());
+//                        System.out.println("CPF:" + co.getCliente().getCpfCliente());
+//                        
+//                        achouConta = true;
+//                    }
+//                }
+//            }
+//        }
+//        if (achouConta){
+//            System.out.println("Cliente possui conta, deseja excluir ambos? (S/N)");
+//            String resposta = leitor.next();
+//            
+//            if((resposta.equals("s")) || (resposta.equals("S")) || (resposta.equals("sim")) || (resposta.equals("SIM"))){
+//                for (Iterator<Conta> iter = contas.listIterator(); iter.hasNext(); ) {
+//                    Conta a = iter.next();
+//                    if (((a.getCliente().getCpfCliente())).equals(cpf)) {
+//                        iter.remove();
+//                    }
+//                }
+//                
+//                for (Iterator<Cliente> iter = clientes.listIterator(); iter.hasNext(); ) {
+//                    Cliente a = iter.next();
+//                    if ((a.getCpfCliente()).equals(cpf)) {
+//                        iter.remove();
+//                    }
+//                }
+//                System.out.println("Cliente e Contas excluídos com sucesso!");
+//            }
+//            else {
+//                System.out.println("Você não pode excluir um cliente sem excluir a conta também.");
+//            }            
+//        } else if (achouCliente && !achouConta){
+//            System.out.println("Cliente encontrado, e não possui conta, deseja excluir? (S/N)");
+//            String resposta = leitor.next();
+//            
+//            if((resposta.equals("s")) || (resposta.equals("S")) || (resposta.equals("sim")) || (resposta.equals("SIM"))){
+//                for (Iterator<Cliente> iter = clientes.listIterator(); iter.hasNext(); ) {
+//                    Cliente a = iter.next();
+//                    if ((a.getCpfCliente()).equals(cpf)) {
+//                        iter.remove();
+//                    }
+//                }
+//            }
+//        }
+//        
+//        Thread.sleep(1500);
+//    }
     
     public static void pesquisarCliente(List<Cliente> clientes) throws InterruptedException, ParseException {
         System.out.println("Digite o CPF a ser procurado:");
@@ -211,4 +220,52 @@ public class Cliente {
         Thread.sleep(2500);
         return new Cliente();
     }
+    
+    
+    
+    
+    
+    //-----------------------DATABASE
+    
+    
+    
+    
+    
+    
+    
+    
+        public static boolean logar(String login, String senhaa) throws SQLException, ClassNotFoundException{
+        
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();
+        String senha = getHashMd5(senhaa);
+        String consulta ="SELECT * FROM clientes WHERE login = '"+ login + "' AND senha = '" + senha + "'";
+        ResultSet resultSet = stmt.executeQuery(consulta);
+        
+        while (resultSet.next()){
+            Cliente logado = new Cliente(resultSet.getInt("id"),resultSet.getString("nome"),resultSet.getString("cpf"),resultSet.getDate("dataNasc"));
+            String a = resultSet.getString("login");
+            String b = resultSet.getString("senha");
+            if ((a.equals(login)) && (b.equals(senha))){
+                Cliente.logado = logado;
+                Conta.logar(logado);
+                return true;
+            }
+        }
+        
+        return false;
+    }
+        
+        public static String getHashMd5(String value) {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+        BigInteger hash = new BigInteger(1, md.digest(value.getBytes()));
+        return hash.toString(16);
+    }
 }
+
+

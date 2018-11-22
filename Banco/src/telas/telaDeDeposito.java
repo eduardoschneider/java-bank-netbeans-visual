@@ -5,7 +5,9 @@
  */
 package telas;
 
+import banco.Conta;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -42,13 +44,13 @@ public class telaDeDeposito extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtValor1 = new javax.swing.JFormattedTextField();
+        txtContaAlvo = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         card = new javax.swing.JLabel();
         maoComCartao = new javax.swing.JLabel();
         mao = new javax.swing.JLabel();
-        confirmaSaqueButton = new javax.swing.JButton();
+        confirmaDepositoButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         txtValor = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -59,12 +61,12 @@ public class telaDeDeposito extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtValor1.setBackground(new java.awt.Color(236, 217, 205));
-        txtValor1.setBorder(null);
-        txtValor1.setForeground(new java.awt.Color(0, 0, 0));
-        txtValor1.setText("CC: 000-00");
-        txtValor1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 130, 20));
+        txtContaAlvo.setBackground(new java.awt.Color(236, 217, 205));
+        txtContaAlvo.setBorder(null);
+        txtContaAlvo.setForeground(new java.awt.Color(0, 0, 0));
+        txtContaAlvo.setText("CC: 000-00");
+        txtContaAlvo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jPanel1.add(txtContaAlvo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 130, 20));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -87,16 +89,21 @@ public class telaDeDeposito extends javax.swing.JFrame {
         mao.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(mao, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 320, 200));
 
-        confirmaSaqueButton.setBackground(new java.awt.Color(0, 153, 0));
-        confirmaSaqueButton.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        confirmaSaqueButton.setForeground(new java.awt.Color(255, 255, 255));
-        confirmaSaqueButton.setText("OK");
-        confirmaSaqueButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmaSaqueButtonActionPerformed(evt);
+        confirmaDepositoButton.setBackground(new java.awt.Color(0, 153, 0));
+        confirmaDepositoButton.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        confirmaDepositoButton.setForeground(new java.awt.Color(255, 255, 255));
+        confirmaDepositoButton.setText("OK");
+        confirmaDepositoButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                confirmaDepositoButtonMouseClicked(evt);
             }
         });
-        jPanel1.add(confirmaSaqueButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 80, 20));
+        confirmaDepositoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmaDepositoButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(confirmaDepositoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 80, 20));
 
         jButton1.setBackground(new java.awt.Color(102, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -130,7 +137,7 @@ public class telaDeDeposito extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void confirmaSaqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaSaqueButtonActionPerformed
+    private void confirmaDepositoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaDepositoButtonActionPerformed
 
         mao.setVisible(true);
         card.setVisible(true);
@@ -164,7 +171,7 @@ public class telaDeDeposito extends javax.swing.JFrame {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 mao.setBounds(26, 350, 320, 200);
-                confirmaSaqueButton.setBackground(new Color(0,102,0));
+                confirmaDepositoButton.setBackground(new Color(0,102,0));
             }
             
         }, delay, intervalMao);
@@ -172,7 +179,7 @@ public class telaDeDeposito extends javax.swing.JFrame {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 mao.setBounds(20, 350, 320, 200);
-                confirmaSaqueButton.setBackground(new Color(0,153,0));
+                confirmaDepositoButton.setBackground(new Color(0,153,0));
             }
             
         }, delay, intervalMao);
@@ -184,11 +191,19 @@ public class telaDeDeposito extends javax.swing.JFrame {
             }
             
         }, 2300, 1);
-    }//GEN-LAST:event_confirmaSaqueButtonActionPerformed
+    }//GEN-LAST:event_confirmaDepositoButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         close();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void confirmaDepositoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmaDepositoButtonMouseClicked
+        try {
+            Conta.logado.depositar(txtContaAlvo.getText(), Double.parseDouble(txtValor.getText()));
+        } catch (InterruptedException | SQLException ex) {
+            Logger.getLogger(telaDeDeposito.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_confirmaDepositoButtonMouseClicked
 
     
     public void close(){
@@ -201,7 +216,7 @@ public class telaDeDeposito extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel card;
-    private javax.swing.JButton confirmaSaqueButton;
+    private javax.swing.JButton confirmaDepositoButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -210,7 +225,7 @@ public class telaDeDeposito extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel mao;
     private javax.swing.JLabel maoComCartao;
+    private javax.swing.JFormattedTextField txtContaAlvo;
     private javax.swing.JFormattedTextField txtValor;
-    private javax.swing.JFormattedTextField txtValor1;
     // End of variables declaration//GEN-END:variables
 }

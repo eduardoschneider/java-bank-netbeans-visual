@@ -5,12 +5,11 @@
  */
 package telas;
 
-import conexao.ConnectionFactory;
+import banco.Cliente;
+import banco.Conta;
+import banco.Poupanca;
 import java.awt.Color;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,14 +23,20 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
     /**
      * Creates new form telaPrincipalUsuario
      */
-    public telaPrincipalUsuario() throws SQLException, ClassNotFoundException {
+    public telaPrincipalUsuario() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
         this.setUndecorated(true);
         this.setBackground(new Color(0,0,0,0));
         initComponents();
-        setLocationRelativeTo(null); //abre a tela no centro
-        ConnectionFactory con = new ConnectionFactory();
-        con.conectar();        
+        setLocationRelativeTo(null); //abre a tela no centro 
+        
+        if (Poupanca.logado != null){
+            btnSacarPoupanca.setEnabled(true);
+            btnDepositarPoupanca.setEnabled(true);
+            btnConsultarPoupanca.setEnabled(true);
+            poup1.setVisible(false);
+            poup2.setVisible(false);
+        }
     }
 
     /**
@@ -45,8 +50,8 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
 
         fundo1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        poup1 = new javax.swing.JLabel();
+        poup2 = new javax.swing.JLabel();
         btnAvancarODia1 = new javax.swing.JButton();
         btnExtrato = new javax.swing.JButton();
         btnPagamento = new javax.swing.JButton();
@@ -78,19 +83,19 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Procure um administrador para mais informações. (ERROR 00x3717)");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 630, 20));
+        poup1.setBackground(new java.awt.Color(255, 255, 255));
+        poup1.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
+        poup1.setForeground(new java.awt.Color(153, 0, 0));
+        poup1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        poup1.setText("Procure um administrador para mais informações. (ERROR 00x3717)");
+        jPanel1.add(poup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 630, 20));
 
-        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Atenção: Nenhuma poupança vinculada, e por isso suas ações foram bloqueadas.");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 275, 620, 20));
+        poup2.setBackground(new java.awt.Color(0, 0, 0));
+        poup2.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
+        poup2.setForeground(new java.awt.Color(153, 0, 0));
+        poup2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        poup2.setText("Atenção: Nenhuma poupança vinculada, e por isso suas ações foram bloqueadas.");
+        jPanel1.add(poup2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 275, 620, 20));
 
         btnAvancarODia1.setBackground(new java.awt.Color(255, 255, 255));
         btnAvancarODia1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -114,6 +119,11 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnExtratoMouseExited(evt);
+            }
+        });
+        btnExtrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExtratoActionPerformed(evt);
             }
         });
         jPanel1.add(btnExtrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 110, 86));
@@ -308,6 +318,11 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
                 btnTransferenciaMouseExited(evt);
             }
         });
+        btnTransferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransferenciaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnTransferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 230, 60));
 
         btnVoltar.setBackground(new java.awt.Color(255, 255, 255));
@@ -395,6 +410,9 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
         this.setVisible(false);
+        Cliente.logado = null;
+        Conta.logado = null;
+        Poupanca.logado = null;
         new telaDeLogin().setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
@@ -495,6 +513,24 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSaqueMouseClicked
 
+    private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
+        this.setVisible(false);
+        try {
+            new telaDeTransferencia().setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnTransferenciaActionPerformed
+
+    private void btnExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtratoActionPerformed
+        this.setVisible(false);
+        try {
+            new telaExtrato().setVisible(true);
+        } catch (InterruptedException | SQLException ex) {
+            Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnExtratoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -518,9 +554,9 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel fundo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblInvestimentos;
+    private javax.swing.JLabel poup1;
+    private javax.swing.JLabel poup2;
     // End of variables declaration//GEN-END:variables
 }

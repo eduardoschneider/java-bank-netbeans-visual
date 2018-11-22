@@ -8,6 +8,11 @@ package banco;
 import static banco.Helper.clearScreen;
 import static banco.Helper.formataDecimal;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +25,8 @@ import java.time.ZoneId;
  * @author eduardo.schneider
  */
 public class Poupanca {
-
+    
+    public static Poupanca logado = null;
     private String codigoPoupanca;
     private Cliente cliente;
     private BigDecimal saldo;
@@ -70,37 +76,37 @@ public class Poupanca {
         return null;
     }
 
-    public static void depositarPoupanca(Conta contaAtual, List<Poupanca> poupancas, List<Extrato> extratos, List<Poupanca_Extrato> poupancaMovimento, int contadorPoupancaDepositos) throws InterruptedException {
-        clearScreen();
-        System.out.println("Digite o valor que deseja depositar na poupança: \n");
-        Scanner leitor = new Scanner(System.in);
-        BigDecimal valor = new BigDecimal(leitor.next());
-
-        System.out.println("Digite o ID da conta poupanca a ser depositado: \n");
-        String idAlvo = leitor.next();
-        Poupanca poupancaAlvo = null;
-        for (Poupanca p : poupancas) {
-            if (p.getIdPoupanca().equals(idAlvo)) {
-                poupancaAlvo = p;
-            }
-        }
-        if (poupancaAlvo != null) {
-            if ((contaAtual.getSaldo()).compareTo(valor.add(new BigDecimal("0.1"))) > 0) {
-                contaAtual.setSaldo((contaAtual.getSaldo()).subtract(valor));
-                poupancaAlvo.setSaldo((poupancaAlvo.getSaldo()).add(valor));
-                Extrato extratoSaida = new Extrato(new Date(), valor, false, contaAtual);
-                extratos.add(extratoSaida);
-                Poupanca_Extrato movimento = new Poupanca_Extrato(contadorPoupancaDepositos, poupancaAlvo, valor, new Date(), null, new Date(), true);
-                poupancaMovimento.add(movimento);
-                System.out.println("Depositado com sucesso.");
-            } else {
-                System.out.println("Saldo insuficiente na conta corrente para transferir para poupança.");
-            }
-        } else {
-            System.out.println("Conta poupança inserida não existe.");
-        }
-        Thread.sleep(1500);
-    }
+//    public static void depositarPoupanca(Conta contaAtual, List<Poupanca> poupancas, List<Extrato> extratos, List<Poupanca_Extrato> poupancaMovimento, int contadorPoupancaDepositos) throws InterruptedException {
+//        clearScreen();
+//        System.out.println("Digite o valor que deseja depositar na poupança: \n");
+//        Scanner leitor = new Scanner(System.in);
+//        BigDecimal valor = new BigDecimal(leitor.next());
+//
+//        System.out.println("Digite o ID da conta poupanca a ser depositado: \n");
+//        String idAlvo = leitor.next();
+//        Poupanca poupancaAlvo = null;
+//        for (Poupanca p : poupancas) {
+//            if (p.getIdPoupanca().equals(idAlvo)) {
+//                poupancaAlvo = p;
+//            }
+//        }
+//        if (poupancaAlvo != null) {
+//            if ((contaAtual.getSaldo()).compareTo(valor.add(new BigDecimal("0.1"))) > 0) {
+//                contaAtual.setSaldo((contaAtual.getSaldo()).subtract(valor));
+//                poupancaAlvo.setSaldo((poupancaAlvo.getSaldo()).add(valor));
+//                Extrato extratoSaida = new Extrato(new Date(), valor, false, contaAtual);
+//                extratos.add(extratoSaida);
+//                Poupanca_Extrato movimento = new Poupanca_Extrato(contadorPoupancaDepositos, poupancaAlvo, valor, new Date(), null, new Date(), true);
+//                poupancaMovimento.add(movimento);
+//                System.out.println("Depositado com sucesso.");
+//            } else {
+//                System.out.println("Saldo insuficiente na conta corrente para transferir para poupança.");
+//            }
+//        } else {
+//            System.out.println("Conta poupança inserida não existe.");
+//        }
+//        Thread.sleep(1500);
+//    }
 
     @Override
     public int hashCode() {
@@ -198,9 +204,35 @@ public class Poupanca {
         }
         
    }
-
     public void printSaldo() throws InterruptedException {
         System.out.println("O saldo da sua poupança é: R$" + this.getSaldo());
         Thread.sleep(1500);
     }
-}
+        
+    
+    
+    
+    
+    //-----------------------DATABASE
+    
+    
+    
+    
+    
+    
+    
+    
+    public static void logar(Cliente cliente) throws SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();
+        int clientId = cliente.getIdCliente();
+        String consulta ="SELECT * FROM poupanca WHERE cliente = '" + clientId + "'";
+        ResultSet resultSet = stmt.executeQuery(consulta);
+        
+        while (resultSet.next()){
+            Poupanca logado = new Poupanca(resultSet.getString("id"), cliente, new BigDecimal(resultSet.getDouble("saldo")));
+                Poupanca.logado = logado;
+            }
+        } 
+    }
+

@@ -5,16 +5,22 @@
  */
 package telas;
 
+import banco.Cliente;
 import banco.RoundedBorder;
+import conexao.ConnectionFactory;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author eduardo.schneider
  */
 public class telaDeLogin extends javax.swing.JFrame {
-
     /**
      * Creates new form telaDeLogin
      */
@@ -30,6 +36,8 @@ public class telaDeLogin extends javax.swing.JFrame {
         btnEntrar.setBorder(new RoundedBorder(15));
         btnEntrar.setForeground(Color.black);
         txtFocus.requestFocus();
+        ConnectionFactory con = new ConnectionFactory();
+        con.conectar();   
     }
 
     /**
@@ -46,7 +54,7 @@ public class telaDeLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         jRadioButton1 = new javax.swing.JRadioButton();
         txtLogin = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
@@ -71,9 +79,9 @@ public class telaDeLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 207, 34));
+        txtSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 207, 34));
 
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
@@ -170,8 +178,21 @@ public class telaDeLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-        this.setVisible(false);
-        new telaPrincipalUsuario().setVisible(true);
+        
+        try {
+            if (Cliente.logar(txtLogin.getText(), txtSenha.getText())){
+                this.setVisible(false);
+                new telaPrincipalUsuario().setVisible(true);
+            } else
+            {
+                JFrame frame = new JFrame("");
+                JOptionPane.showMessageDialog(frame,"Usuário ou Senha inválidos.",
+                    "ERRO",JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(telaDeLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnEntrarMouseClicked
        
     /**
@@ -218,9 +239,9 @@ public class telaDeLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField txtFocus;
     private javax.swing.JTextField txtLogin;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

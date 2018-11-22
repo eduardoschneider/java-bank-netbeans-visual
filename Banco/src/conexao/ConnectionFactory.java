@@ -44,14 +44,5 @@ public class ConnectionFactory {
             ex.printStackTrace();
         }
     }
-    
-    public void inserir() throws SQLException, ClassNotFoundException{
-        
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
-        Statement stmt = (Statement)con2.createStatement();
-        String insert ="INSERT INTO clientes VALUES('0','"+"Eduardo Schneider"+"','"+550+"',    '"+"46483321805"+"');";
-        stmt.executeUpdate(insert);
-    }
 
 }

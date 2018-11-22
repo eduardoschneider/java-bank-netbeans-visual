@@ -113,86 +113,86 @@ public class CDB {
         Thread.sleep(1500);
     }
 
-    public static void investirCDB(Conta contaAtual, List<CDB> cdbs, List<CDB_Extrato> cdbMovimento, int idDeposito, List<Extrato> extratos) throws InterruptedException {
-        System.out.println("Digite o código do CDB que deseja investir:");
-        Scanner leitor = new Scanner(System.in);
-        int codigo = Integer.parseInt(leitor.next());
+//    public static void investirCDB(Conta contaAtual, List<CDB> cdbs, List<CDB_Extrato> cdbMovimento, int idDeposito, List<Extrato> extratos) throws InterruptedException {
+//        System.out.println("Digite o código do CDB que deseja investir:");
+//        Scanner leitor = new Scanner(System.in);
+//        int codigo = Integer.parseInt(leitor.next());
+//
+//        System.out.println("Digite o valor que deseja investir:");
+//        BigDecimal valor = new BigDecimal(leitor.next());
+//
+//        if (contaAtual.getSaldo().compareTo(valor) > 0) {
+//            CDB cdbAlvo = null;
+//            for (CDB cdb : cdbs) {
+//                if (cdb.getId() == codigo) {
+//                    cdbAlvo = cdb;
+//                }
+//            }
+//            if (cdbAlvo != null) {
+//                cdbAlvo.setSaldo(cdbAlvo.getSaldo().add(valor));
+//                contaAtual.setSaldo(contaAtual.getSaldo().subtract(valor));
+//                CDB_Extrato movimento = new CDB_Extrato(idDeposito, cdbAlvo, contaAtual.getCliente(), valor, new Date(), true);
+//                cdbMovimento.add(movimento);
+//                System.out.println("Investimento realizado com sucesso!");
+//                Extrato extratoSaida = new Extrato(new Date(), valor, false, contaAtual);
+//                extratos.add(extratoSaida);
+//            } else {
+//                System.out.println("CDB Inexistente, por favor, verifique o código digitado.");
+//            }
+//
+//        } else {
+//            System.out.println("Saldo insuficiente para realizar a transação.");
+//        }
+//
+//        Thread.sleep(1500);
+//    }
 
-        System.out.println("Digite o valor que deseja investir:");
-        BigDecimal valor = new BigDecimal(leitor.next());
-
-        if (contaAtual.getSaldo().compareTo(valor) > 0) {
-            CDB cdbAlvo = null;
-            for (CDB cdb : cdbs) {
-                if (cdb.getId() == codigo) {
-                    cdbAlvo = cdb;
-                }
-            }
-            if (cdbAlvo != null) {
-                cdbAlvo.setSaldo(cdbAlvo.getSaldo().add(valor));
-                contaAtual.setSaldo(contaAtual.getSaldo().subtract(valor));
-                CDB_Extrato movimento = new CDB_Extrato(idDeposito, cdbAlvo, contaAtual.getCliente(), valor, new Date(), true);
-                cdbMovimento.add(movimento);
-                System.out.println("Investimento realizado com sucesso!");
-                Extrato extratoSaida = new Extrato(new Date(), valor, false, contaAtual);
-                extratos.add(extratoSaida);
-            } else {
-                System.out.println("CDB Inexistente, por favor, verifique o código digitado.");
-            }
-
-        } else {
-            System.out.println("Saldo insuficiente para realizar a transação.");
-        }
-
-        Thread.sleep(1500);
-    }
-
-    public static void verificaJuros(List<CDB> cdbs, List<Conta> contas, List<CDB_Extrato> cdbMovimento, Date dataDeHoje, List<Extrato> extratos) {
-        LocalDate localDate = dataDeHoje.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int month = localDate.getMonthValue();
-
-        Taxas taxas = new Taxas();
-        BigDecimal taxaAtual;
-        if (month >= 7) {
-            taxaAtual = taxas.getCdiDiario()[month - 7];
-        } else {
-            taxaAtual = taxas.getCdiDiario()[month + 5];
-        }
-
-        for (CDB_Extrato movimento : cdbMovimento) {
-            movimento.setSaldo(movimento.getSaldo().add(movimento.getSaldo().multiply(taxaAtual.divide(new BigDecimal("100")))));
-        }
-
-        for (CDB cdb : cdbs) {
-            cdb.setSaldo(cdb.getSaldo().add(cdb.getSaldo().multiply(taxaAtual.divide(new BigDecimal("100")))));
-
-            Date vencimento = cdb.getVencimento();
-            localDate = vencimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            int day = localDate.getDayOfYear();
-            localDate = dataDeHoje.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            int dayToday = localDate.getDayOfYear();
-
-            if (((day - dayToday) == 0)) { // vence hoje
-                for (CDB_Extrato movimento : cdbMovimento) {
-                    if (movimento.getStatus()) {
-                        if (movimento.getCdb() == cdb) { //movimento do CDB que venceu
-
-                            for (Conta conta : contas) {
-                                if (movimento.getCliente() == conta.getCliente()) {
-                                    Extrato extratoEntrada = new Extrato(new Date(), movimento.getSaldo(), false, conta);
-                                    extratos.add(extratoEntrada);
-                                    conta.setSaldo(conta.getSaldo().add(movimento.getSaldo()));
-                                }
-                            }
-                            
-                            movimento.setSaldo(new BigDecimal("0.0"));
-                            movimento.getCdb().setNome("VENCIDO(" + movimento.getCdb().getNome() + ")");
-                            movimento.setStatus(false);
-                        }
-                    }
-                }
-                cdb.setSaldo(new BigDecimal("0.0"));
-            }
-        }
-    }
+//    public static void verificaJuros(List<CDB> cdbs, List<Conta> contas, List<CDB_Extrato> cdbMovimento, Date dataDeHoje, List<Extrato> extratos) {
+//        LocalDate localDate = dataDeHoje.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        int month = localDate.getMonthValue();
+//
+//        Taxas taxas = new Taxas();
+//        BigDecimal taxaAtual;
+//        if (month >= 7) {
+//            taxaAtual = taxas.getCdiDiario()[month - 7];
+//        } else {
+//            taxaAtual = taxas.getCdiDiario()[month + 5];
+//        }
+//
+//        for (CDB_Extrato movimento : cdbMovimento) {
+//            movimento.setSaldo(movimento.getSaldo().add(movimento.getSaldo().multiply(taxaAtual.divide(new BigDecimal("100")))));
+//        }
+//
+//        for (CDB cdb : cdbs) {
+//            cdb.setSaldo(cdb.getSaldo().add(cdb.getSaldo().multiply(taxaAtual.divide(new BigDecimal("100")))));
+//
+//            Date vencimento = cdb.getVencimento();
+//            localDate = vencimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//            int day = localDate.getDayOfYear();
+//            localDate = dataDeHoje.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//            int dayToday = localDate.getDayOfYear();
+//
+//            if (((day - dayToday) == 0)) { // vence hoje
+//                for (CDB_Extrato movimento : cdbMovimento) {
+//                    if (movimento.getStatus()) {
+//                        if (movimento.getCdb() == cdb) { //movimento do CDB que venceu
+//
+//                            for (Conta conta : contas) {
+//                                if (movimento.getCliente() == conta.getCliente()) {
+//                                    Extrato extratoEntrada = new Extrato(new Date(), movimento.getSaldo(), false, conta);
+//                                    extratos.add(extratoEntrada);
+//                                    conta.setSaldo(conta.getSaldo().add(movimento.getSaldo()));
+//                                }
+//                            }
+//                            
+//                            movimento.setSaldo(new BigDecimal("0.0"));
+//                            movimento.getCdb().setNome("VENCIDO(" + movimento.getCdb().getNome() + ")");
+//                            movimento.setStatus(false);
+//                        }
+//                    }
+//                }
+//                cdb.setSaldo(new BigDecimal("0.0"));
+//            }
+//        }
+//    }
 }
