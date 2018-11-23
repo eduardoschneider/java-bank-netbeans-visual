@@ -9,6 +9,10 @@ import banco.RoundedBorder;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -43,7 +47,7 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnAddPoupanca = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        diasSpinner = new javax.swing.JSpinner();
         btnEXTRA = new javax.swing.JButton();
         btnPesquisaConta = new javax.swing.JButton();
         btnExcluirConta = new javax.swing.JButton();
@@ -101,9 +105,14 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(btnAddPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 50, 86));
 
-        jSpinner1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jSpinner1.setToolTipText("x");
-        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 90, 50));
+        diasSpinner.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        diasSpinner.setToolTipText("x");
+        diasSpinner.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                diasSpinnerMouseClicked(evt);
+            }
+        });
+        jPanel1.add(diasSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 90, 50));
 
         btnEXTRA.setBackground(new java.awt.Color(255, 255, 255));
         btnEXTRA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -275,6 +284,9 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         btnCadastroCliente.setText("Cadastrar");
         btnCadastroCliente.setActionCommand("");
         btnCadastroCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastroClienteMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCadastroClienteMouseEntered(evt);
             }
@@ -527,6 +539,17 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddInvestimentoActionPerformed
 
+    private void diasSpinnerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diasSpinnerMouseClicked
+        if ((Integer) diasSpinner.getValue() < 0){
+            diasSpinner.setValue(1);
+        }
+    }//GEN-LAST:event_diasSpinnerMouseClicked
+
+    private void btnCadastroClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroClienteMouseClicked
+        this.setVisible(false);
+        new telaDeCC().setVisible(true);
+    }//GEN-LAST:event_btnCadastroClienteMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -549,12 +572,12 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnPesquisaConta;
     private javax.swing.JButton btnPoupanca;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JSpinner diasSpinner;
     private javax.swing.JLabel fundo;
     private javax.swing.JLabel fundo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblInvestimentos;
     // End of variables declaration//GEN-END:variables
 }

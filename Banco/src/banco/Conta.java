@@ -155,9 +155,23 @@ public class Conta {
         }
     }
 
-    public void consultarSaldo() throws InterruptedException {
-        System.out.println("O seu saldo é de: R$" + this.getSaldo());
-        Thread.sleep(1500);
+    public void consultarSaldo() throws SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();   
+        
+        String update2 ="SELECT * FROM conta WHERE id = " + this.getIdConta();
+        stmt.executeQuery(update2);
+        double saldo = 0;
+        ResultSet resultSet = stmt.getResultSet();
+        while(resultSet.next()){
+           saldo = resultSet.getDouble("saldo"); 
+                
+         }
+       
+        JFrame frame = new JFrame("");
+        JOptionPane.showMessageDialog(frame,"Seu saldo é de R$" + saldo,
+        "Saldo",JOptionPane.INFORMATION_MESSAGE);
+       
     }
 
 //    public static void cadastrarConta(List<Cliente> todos, List<Conta> todas, int idConta) throws InterruptedException {
@@ -226,7 +240,7 @@ public class Conta {
         String extrato = "SELECT * FROM extrato WHERE conta = " + this.getIdConta();
         stmt.executeQuery(extrato);
         ResultSet resultSet = stmt.getResultSet();
-        String tudao = "Extrato: \n";
+        String tudao = "\n";
         String positividade = "";
         while(resultSet.next()){
             if (resultSet.getInt("tipoMovimento") == 1) 
@@ -314,25 +328,28 @@ public class Conta {
         
     
 
-//    public void pagarBoleto(List<Extrato> extratos) throws InterruptedException {
-//        System.out.println("Digite o código do documento a ser pago:\n");
-//        Scanner leitor = new Scanner(System.in);
-//        String codigo = leitor.next();
-//
-//        System.out.println("Digite o valor a ser pago:\n");
-//        BigDecimal valor = new BigDecimal(leitor.next());
-//
-//        if ((this.saldo).compareTo(valor) < 0) {
-//            System.out.println("\nVocê não tem saldo suficiente para realizar o pagamento.");
-//        } else {
-//            this.setSaldo((this.saldo).subtract(valor));
-//            Extrato saida = new Extrato(new Date(), valor, false, this);
-//            extratos.add(saida);
-//            System.out.println("\nPagamento realizado com sucesso.");
-//        }
-//        
-//        Thread.sleep(1500);
-//    }
+    public void pagarBoleto(Double quantidade) throws SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();   
+        Date data = new Date();
+        LocalDate date = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        if (this.getSaldo() >= quantidade) {
+        
+            String update1 ="UPDATE conta SET saldo = saldo - " + quantidade + "WHERE codigo = '" + this.getCodigoConta() + "'";
+            stmt.execute(update1);
+
+            String update3 ="INSERT INTO extrato(data,valor,tipoMovimento,conta) VALUES ('" + date + "'," + quantidade + "," + true + "," + this.getIdConta() + ");";
+            System.out.println(update3);
+            stmt.execute(update3);
+        }
+        else
+        {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,"Saldo insuficiente para realizar a transação.",
+            "ERRO",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
 //    public static void excluirConta(List<Conta> contas) throws InterruptedException {
 //        System.out.println("Digite o CPF do dono da conta que deseja excluir:\n");

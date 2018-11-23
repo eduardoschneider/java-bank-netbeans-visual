@@ -9,6 +9,9 @@ import banco.Conta;
 import java.awt.Color;
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 /**
  *
  * @author eduardo.schneider
@@ -27,6 +30,7 @@ public class telaExtrato extends javax.swing.JFrame {
         
         txtExtrato.setText(Conta.logado.retirarExtrato());
         
+        
     }
 
     /**
@@ -38,9 +42,8 @@ public class telaExtrato extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fundo1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtExtrato = new javax.swing.JTextArea();
         lblInvestimentos = new javax.swing.JLabel();
@@ -49,18 +52,9 @@ public class telaExtrato extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fundo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bank3.png"))); // NOI18N
-        fundo1.setAlignmentX(0.5F);
-        fundo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(fundo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 150, 130));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         btnVoltar.setBackground(new java.awt.Color(255, 255, 255));
-        btnVoltar.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        btnVoltar.setText("Sair");
+        btnVoltar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnVoltar.setText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVoltarMouseClicked(evt);
@@ -72,28 +66,34 @@ public class telaExtrato extends javax.swing.JFrame {
                 btnVoltarMouseExited(evt);
             }
         });
-        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 550, 50));
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 270, 30));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 200));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
-        txtExtrato.setBackground(new java.awt.Color(255, 255, 255));
+        txtExtrato.setEditable(false);
+        txtExtrato.setBackground(new java.awt.Color(255, 255, 200));
         txtExtrato.setColumns(20);
-        txtExtrato.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        txtExtrato.setFont(new java.awt.Font("Bodoni Bk BT", 0, 14)); // NOI18N
         txtExtrato.setRows(5);
         txtExtrato.setBorder(null);
+        txtExtrato.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(txtExtrato);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 550, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 130, 370, 200));
 
         lblInvestimentos.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         lblInvestimentos.setText("(Investimentos)");
         jPanel1.add(lblInvestimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 290, -1, -1));
 
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/112_hard.jpg"))); // NOI18N
-        jPanel1.add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 660, 460));
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/notafiscal.png"))); // NOI18N
+        fundo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 430));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 650, 480));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 346, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,7 +120,6 @@ public class telaExtrato extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel fundo;
-    private javax.swing.JLabel fundo1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblInvestimentos;

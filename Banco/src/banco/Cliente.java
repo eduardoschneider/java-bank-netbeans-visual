@@ -17,10 +17,14 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,24 +83,6 @@ public class Cliente {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
-    }
-    
-    public static Cliente cadastrarCliente(int idCliente) throws ParseException {
-        System.out.println("Digite o nome do cliente\n");
-        Scanner leitor = new Scanner(System.in);
-        String nome = leitor.nextLine();
-
-        System.out.println("Digite o CPF do cliente\n");
-        String cpf = leitor.next();
-
-        System.out.println("Digite a Data de Nascimento (ex: 12/04/97) \n");
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = format.parse(leitor.next());
-        
-        Cliente cliente = new Cliente(idCliente, nome, cpf, data);
-        clearScreen();
-
-        return cliente;
     }
     
 //    public static void excluirCliente(List<Cliente> clientes, List<Conta> contas) throws InterruptedException{
@@ -265,6 +251,21 @@ public class Cliente {
         }
         BigInteger hash = new BigInteger(1, md.digest(value.getBytes()));
         return hash.toString(16);
+    }
+
+    public void cadastrarCliente(String nome, String cpf, String dataNasc, String login, String senha) throws SQLException, ParseException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+        String senhaa = getHashMd5(senha);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); // your template here
+        java.util.Date dateStr = formatter.parse(dataNasc);
+        java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
+        String update3 ="INSERT INTO clientes(nome,cpf,dataNasc,login,senha) VALUES ('" + nome + "','" + cpf + "','" + dateDB + "','" + login +"','" + senhaa + "');";
+        System.out.println(update3);
+        stmt.execute(update3);
+        JFrame frame = new JFrame("");
+        JOptionPane.showMessageDialog(frame,"Usuário inserido com sucesso.",
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
     }
 }
 

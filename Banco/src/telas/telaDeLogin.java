@@ -55,7 +55,7 @@ public class telaDeLogin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtSenha = new javax.swing.JPasswordField();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        admRadio = new javax.swing.JRadioButton();
         txtLogin = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -83,15 +83,15 @@ public class telaDeLogin extends javax.swing.JFrame {
         txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 207, 34));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
-        jRadioButton1.setText("Admin");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        admRadio.setBackground(new java.awt.Color(255, 255, 255));
+        admRadio.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        admRadio.setText("Admin");
+        admRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                admRadioActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 147, 70, -1));
+        jPanel1.add(admRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 147, 70, -1));
 
         txtLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtLogin.setText("CPF");
@@ -173,24 +173,29 @@ public class telaDeLogin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void admRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admRadioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_admRadioActionPerformed
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-        
-        try {
-            if (Cliente.logar(txtLogin.getText(), txtSenha.getText())){
-                this.setVisible(false);
-                new telaPrincipalUsuario().setVisible(true);
-            } else
-            {
-                JFrame frame = new JFrame("");
-                JOptionPane.showMessageDialog(frame,"Usuário ou Senha inválidos.",
-                    "ERRO",JOptionPane.INFORMATION_MESSAGE);
+        if (!admRadio.isSelected()) {
+            try {
+                if (Cliente.logar(txtLogin.getText(), txtSenha.getText())){
+                    this.setVisible(false);
+                    new telaPrincipalUsuario().setVisible(true);
+                } else
+                {
+                    JFrame frame = new JFrame("");
+                    JOptionPane.showMessageDialog(frame,"Usuário ou Senha inválidos.",
+                        "ERRO",JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(telaDeLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(telaDeLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } else
+        {
+            this.setVisible(false);
+            new telaPrincipalAdmin().setVisible(true);
         }
         
     }//GEN-LAST:event_btnEntrarMouseClicked
@@ -231,6 +236,7 @@ public class telaDeLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton admRadio;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -239,7 +245,6 @@ public class telaDeLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField txtFocus;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;

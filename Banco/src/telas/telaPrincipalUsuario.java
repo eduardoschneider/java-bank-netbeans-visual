@@ -132,6 +132,9 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
         btnPagamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnPagamento.setText("Pagamento");
         btnPagamento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPagamentoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPagamentoMouseEntered(evt);
             }
@@ -157,6 +160,11 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
                 btnSaldoMouseExited(evt);
             }
         });
+        btnSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaldoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSaldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 110, 86));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
@@ -173,7 +181,7 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 212, 630, 40));
 
         btnConsultarPoupanca.setBackground(new java.awt.Color(255, 255, 255));
-        btnConsultarPoupanca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnConsultarPoupanca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnConsultarPoupanca.setText("Consultar");
         btnConsultarPoupanca.setEnabled(false);
         btnConsultarPoupanca.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,7 +195,7 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
         jPanel1.add(btnConsultarPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 256, 202, 70));
 
         btnDepositarPoupanca.setBackground(new java.awt.Color(255, 255, 255));
-        btnDepositarPoupanca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDepositarPoupanca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDepositarPoupanca.setText("Depositar");
         btnDepositarPoupanca.setEnabled(false);
         btnDepositarPoupanca.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,7 +209,7 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
         jPanel1.add(btnDepositarPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 256, 202, 70));
 
         btnSacarPoupanca.setBackground(new java.awt.Color(255, 255, 255));
-        btnSacarPoupanca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSacarPoupanca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSacarPoupanca.setText("Sacar");
         btnSacarPoupanca.setEnabled(false);
         btnSacarPoupanca.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -530,6 +538,23 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
             Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnExtratoActionPerformed
+
+    private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
+        try {
+            Conta.logado.consultarSaldo();
+        } catch (SQLException ex) {
+            Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSaldoActionPerformed
+
+    private void btnPagamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagamentoMouseClicked
+        this.setVisible(false);
+        try {
+            new telaDePagamento().setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPagamentoMouseClicked
 
     /**
      * @param args the command line arguments
