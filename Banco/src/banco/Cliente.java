@@ -17,10 +17,7 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import javax.swing.JFrame;
@@ -263,8 +260,53 @@ public class Cliente {
         String update3 ="INSERT INTO clientes(nome,cpf,dataNasc,login,senha) VALUES ('" + nome + "','" + cpf + "','" + dateDB + "','" + login +"','" + senhaa + "');";
         System.out.println(update3);
         stmt.execute(update3);
+        
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame,"Usuário inserido com sucesso.",
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+    }
+    
+    public void alterarCliente(String nome, String cpf, String dataNasc, String login, String senha) throws SQLException, ParseException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+        String senhaa = getHashMd5(senha);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); // your template here
+        java.util.Date dateStr = formatter.parse(dataNasc);
+        java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
+        
+        String findCliente = "SELECT * FROM clientes WHERE login = '"+ login + "'";
+        ResultSet resultSet = stmt.executeQuery(findCliente);
+        Cliente encontrado = null;
+        
+        while (resultSet.next()){
+            encontrado = new Cliente(resultSet.getInt("id"),resultSet.getString("nome"),resultSet.getString("cpf"),resultSet.getDate("dataNasc"));
+        }
+        
+        String update3 = "UPDATE clientes SET nome = '" + nome + "', cpf = '"+ cpf + "', dataNasc = '" + dateDB + "', senha = '"+ senhaa + "' WHERE login = '" + login + "';";
+        System.out.println(update3);
+        stmt.execute(update3);
+        
+        JFrame frame = new JFrame("");
+        JOptionPane.showMessageDialog(frame,"Usuário alterado com sucesso.",
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+    }
+    
+    public void deletarCliente(String cpf) throws SQLException, ParseException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+
+        String findCliente = "SELECT * FROM clientes WHERE cpf = '"+ cpf + "'";
+        ResultSet resultSet = stmt.executeQuery(findCliente);
+        
+        while (resultSet.next()){
+            String delete3 = "DELETE FROM clientes WHERE id = '" + resultSet.getInt("id") + "'";
+            stmt.execute(delete3);            
+            resultSet.close();
+            break;
+        }
+        
+        JFrame frame = new JFrame("");
+        JOptionPane.showMessageDialog(frame,"Cliente deletado com sucesso.",
         "Yay!",JOptionPane.INFORMATION_MESSAGE);     
     }
 }

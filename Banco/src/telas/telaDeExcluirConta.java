@@ -19,23 +19,19 @@ import org.jdesktop.swingx.prompt.PromptSupport;
  *
  * @author eduardo.schneider
  */
-public class telaDeCC extends javax.swing.JFrame {
+public class telaDeExcluirConta extends javax.swing.JFrame {
 
     /**
      * Creates new form telaPrincipalUsuario
      */
-    public telaDeCC() {
+    public telaDeExcluirConta() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
         this.setUndecorated(true);
         this.setBackground(new Color(0,0,0,0));
         initComponents();
         setLocationRelativeTo(null); //abre a tela no centro 
         
-        PromptSupport.setPrompt("Nome", txtNome);
         PromptSupport.setPrompt("CPF", txtCPF);
-        PromptSupport.setPrompt("Data de Nascimento", txtDataNasc);
-        PromptSupport.setPrompt("Login", txtLogin);
-        PromptSupport.setPrompt("Senha", txtSenha);
     }
 
     /**
@@ -47,39 +43,22 @@ public class telaDeCC extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNome = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
-        txtDataNasc = new javax.swing.JTextField();
-        txtLogin = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JPasswordField();
         cancelaCadastroButton = new javax.swing.JButton();
-        confirmaCadastroButton1 = new javax.swing.JButton();
+        confirmaDeletarButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtNome.setToolTipText("");
-        txtNome.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 210, 30));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Digite o CPF do dono que deseja excluir:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 210, -1));
 
         txtCPF.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 210, 30));
-
-        txtDataNasc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtDataNasc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 210, 30));
-
-        txtLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 210, 30));
-
-        txtSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtSenha.setToolTipText("Senha");
-        txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 210, 30));
+        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 210, 30));
 
         cancelaCadastroButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelaCadastroButton.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -90,18 +69,23 @@ public class telaDeCC extends javax.swing.JFrame {
                 cancelaCadastroButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 210, 40));
+        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 210, 40));
 
-        confirmaCadastroButton1.setBackground(new java.awt.Color(0, 153, 0));
-        confirmaCadastroButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        confirmaCadastroButton1.setForeground(new java.awt.Color(255, 255, 255));
-        confirmaCadastroButton1.setText("Cadastrar");
-        confirmaCadastroButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        confirmaDeletarButton1.setBackground(new java.awt.Color(0, 153, 0));
+        confirmaDeletarButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        confirmaDeletarButton1.setForeground(new java.awt.Color(255, 255, 255));
+        confirmaDeletarButton1.setText("Excluir");
+        confirmaDeletarButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                confirmaCadastroButton1MouseClicked(evt);
+                confirmaDeletarButton1MouseClicked(evt);
             }
         });
-        getContentPane().add(confirmaCadastroButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 210, 40));
+        confirmaDeletarButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmaDeletarButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(confirmaDeletarButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 210, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/prancheta.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 510));
@@ -114,16 +98,20 @@ public class telaDeCC extends javax.swing.JFrame {
         new telaPrincipalAdmin().setVisible(true);
     }//GEN-LAST:event_cancelaCadastroButtonActionPerformed
 
-    private void confirmaCadastroButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmaCadastroButton1MouseClicked
+    private void confirmaDeletarButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmaDeletarButton1MouseClicked
         try {
-            Cliente a = new Cliente();
-            a.cadastrarCliente(txtNome.getText(), txtCPF.getText(), txtDataNasc.getText(), txtLogin.getText(), txtSenha.getText());
+            Conta a = new Conta();
+            a.deletarConta(txtCPF.getText());
             this.setVisible(false);
             new telaPrincipalAdmin().setVisible(true);
         } catch (SQLException | ParseException ex) {
-            Logger.getLogger(telaDeCC.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(telaDeCadastroDeConta.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_confirmaCadastroButton1MouseClicked
+    }//GEN-LAST:event_confirmaDeletarButton1MouseClicked
+
+    private void confirmaDeletarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaDeletarButton1ActionPerformed
+
+    }//GEN-LAST:event_confirmaDeletarButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,12 +119,9 @@ public class telaDeCC extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelaCadastroButton;
-    private javax.swing.JButton confirmaCadastroButton1;
+    private javax.swing.JButton confirmaDeletarButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtDataNasc;
-    private javax.swing.JTextField txtLogin;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

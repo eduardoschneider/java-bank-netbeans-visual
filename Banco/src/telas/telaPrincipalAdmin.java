@@ -5,12 +5,21 @@
  */
 package telas;
 
+import banco.Cliente;
 import banco.RoundedBorder;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -45,9 +54,12 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         fundo1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        fundo3 = new javax.swing.JLabel();
+        fundo5 = new javax.swing.JLabel();
+        fundo4 = new javax.swing.JLabel();
+        fundo2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnAddPoupanca = new javax.swing.JButton();
-        diasSpinner = new javax.swing.JSpinner();
         btnEXTRA = new javax.swing.JButton();
         btnPesquisaConta = new javax.swing.JButton();
         btnExcluirConta = new javax.swing.JButton();
@@ -85,6 +97,18 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         jLabel2.setText("CONTA");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 90, 30));
 
+        fundo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/negative.png"))); // NOI18N
+        jPanel1.add(fundo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, 20));
+
+        fundo5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/negative.png"))); // NOI18N
+        jPanel1.add(fundo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, 20));
+
+        fundo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/plus.png"))); // NOI18N
+        jPanel1.add(fundo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 20, 20));
+
+        fundo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/plus.png"))); // NOI18N
+        jPanel1.add(fundo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 50, 20, 20));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -104,15 +128,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 50, 86));
-
-        diasSpinner.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        diasSpinner.setToolTipText("x");
-        diasSpinner.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                diasSpinnerMouseClicked(evt);
-            }
-        });
-        jPanel1.add(diasSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 90, 50));
 
         btnEXTRA.setBackground(new java.awt.Color(255, 255, 255));
         btnEXTRA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -198,6 +213,11 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnAlterarContaMouseExited(evt);
+            }
+        });
+        btnAlterarConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarContaActionPerformed(evt);
             }
         });
         jPanel1.add(btnAlterarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 110, 86));
@@ -294,11 +314,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
                 btnCadastroClienteMouseExited(evt);
             }
         });
-        btnCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroClienteActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnCadastroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 110, 86));
 
         btnInvestimentos.setBackground(new java.awt.Color(255, 255, 255));
@@ -329,7 +344,12 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
                 btnAvancarODiaMouseExited(evt);
             }
         });
-        jPanel1.add(btnAvancarODia, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 300, 50));
+        btnAvancarODia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvancarODiaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAvancarODia, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 350, 50));
 
         btnAlterarClientes.setBackground(new java.awt.Color(255, 255, 255));
         btnAlterarClientes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -340,6 +360,11 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnAlterarClientesMouseExited(evt);
+            }
+        });
+        btnAlterarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarClientesActionPerformed(evt);
             }
         });
         jPanel1.add(btnAlterarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 110, 86));
@@ -418,10 +443,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         btnVoltar.setForeground(Color.red);
     }//GEN-LAST:event_btnVoltarMouseExited
 
-    private void btnCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroClienteActionPerformed
-
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
         this.setVisible(false);
         new telaDeLogin().setVisible(true);
@@ -434,10 +455,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     private void btnExcluirClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirClienteMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirClienteMouseExited
-
-    private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
     private void btnPesquisaClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClienteMouseEntered
         // TODO add your handling code here:
@@ -480,20 +497,9 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirContaMouseExited
 
     private void btnExcluirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirContaActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        new telaDeExcluirConta().setVisible(true);
     }//GEN-LAST:event_btnExcluirContaActionPerformed
-
-    private void btnCadastroContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroContaMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroContaMouseEntered
-
-    private void btnCadastroContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroContaMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroContaMouseExited
-
-    private void btnCadastroContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroContaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastroContaActionPerformed
 
     private void btnAlterarContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarContaMouseEntered
         // TODO add your handling code here:
@@ -539,16 +545,62 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddInvestimentoActionPerformed
 
-    private void diasSpinnerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diasSpinnerMouseClicked
-        if ((Integer) diasSpinner.getValue() < 0){
-            diasSpinner.setValue(1);
-        }
-    }//GEN-LAST:event_diasSpinnerMouseClicked
-
     private void btnCadastroClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroClienteMouseClicked
         this.setVisible(false);
-        new telaDeCC().setVisible(true);
+        new telaDeCadastroDeCliente().setVisible(true);
     }//GEN-LAST:event_btnCadastroClienteMouseClicked
+
+    private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
+        this.setVisible(false);
+        new telaDeExcluirCliente().setVisible(true);
+    }//GEN-LAST:event_btnExcluirClienteActionPerformed
+
+    private void btnAlterarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClientesActionPerformed
+        this.setVisible(false);
+        new telaDeAlterarCliente().setVisible(true);
+    }//GEN-LAST:event_btnAlterarClientesActionPerformed
+
+    private void btnAlterarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarContaActionPerformed
+        this.setVisible(false);
+        new telaDeAlterarConta().setVisible(true);
+    }//GEN-LAST:event_btnAlterarContaActionPerformed
+
+    private void btnAvancarODiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvancarODiaActionPerformed
+        Connection con2;
+        try {
+            con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+            Statement stmt = (Statement)con2.createStatement();  
+            String findCliente = "SELECT * FROM hoje";
+            ResultSet resultSet = stmt.executeQuery(findCliente);
+            LocalDate hoje = null;
+            
+            while (resultSet.next()){
+                hoje = resultSet.getDate("data").toLocalDate();
+                resultSet.close();
+                break;
+            } 
+            hoje = hoje.plusDays(1);
+            System.out.println(hoje);
+            Date hojeSQL = Date.valueOf(hoje);
+            String aumentaData = "UPDATE hoje SET data = '" + hojeSQL + "' WHERE id = 1;";
+            stmt.execute(aumentaData);
+        } catch (SQLException ex) {
+            Logger.getLogger(telaPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAvancarODiaActionPerformed
+
+    private void btnCadastroContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroContaActionPerformed
+        this.setVisible(false);
+        new telaDeCadastroDeConta().setVisible(true);
+    }//GEN-LAST:event_btnCadastroContaActionPerformed
+
+    private void btnCadastroContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroContaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastroContaMouseExited
+
+    private void btnCadastroContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroContaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastroContaMouseEntered
 
     /**
      * @param args the command line arguments
@@ -572,9 +624,12 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnPesquisaConta;
     private javax.swing.JButton btnPoupanca;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JSpinner diasSpinner;
     private javax.swing.JLabel fundo;
     private javax.swing.JLabel fundo1;
+    private javax.swing.JLabel fundo2;
+    private javax.swing.JLabel fundo3;
+    private javax.swing.JLabel fundo4;
+    private javax.swing.JLabel fundo5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

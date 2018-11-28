@@ -5,26 +5,23 @@
  */
 package banco;
 
+import static banco.Cliente.getHashMd5;
 import static banco.Helper.clearScreen;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import static jdk.nashorn.tools.ShellFunctions.input;
 
 /**
  *
@@ -263,31 +260,23 @@ public class Conta {
         Statement stmt = (Statement)con2.createStatement();   
         Date data = new Date();
         LocalDate date = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        if (this.getSaldo() >= quantidade) {
-            
-            String pegaContaAlvo ="SELECT * FROM conta WHERE codigo = '" + contaAlvo + "'";
-            stmt.executeQuery(pegaContaAlvo);
-            ResultSet resultSet = stmt.getResultSet();
-            Conta alvo = null;
-            
-            while(resultSet.next()){
-                alvo = new Conta(resultSet.getInt("id"), resultSet.getString("codigo"), resultSet.getInt("cliente"), resultSet.getDouble("saldo"));
-            }
-            
-            String update1 ="UPDATE conta SET saldo = saldo + " + quantidade + "WHERE codigo = '" + contaAlvo + "'";
-            stmt.execute(update1);
+                   
+        String pegaContaAlvo ="SELECT * FROM conta WHERE codigo = '" + contaAlvo + "'";
+        stmt.executeQuery(pegaContaAlvo);
+        ResultSet resultSet = stmt.getResultSet();
+        Conta alvo = null;
 
-            String update3 ="INSERT INTO extrato(data,valor,tipoMovimento,conta) VALUES ('" + date + "'," + quantidade + "," + true + "," + alvo.getIdConta() + ");";
-            System.out.println(update3);
-            stmt.execute(update3);
+        while(resultSet.next()){
+            alvo = new Conta(resultSet.getInt("id"), resultSet.getString("codigo"), resultSet.getInt("cliente"), resultSet.getDouble("saldo"));
         }
-        else
-        {
-            JFrame frame = new JFrame("");
-            JOptionPane.showMessageDialog(frame,"Saldo insuficiente para realizar a transação.",
-            "ERRO",JOptionPane.INFORMATION_MESSAGE);
-        }
+
+        String update1 ="UPDATE conta SET saldo = saldo + " + quantidade + "WHERE codigo = '" + contaAlvo + "'";
+        stmt.execute(update1);
+
+        String update3 ="INSERT INTO extrato(data,valor,tipoMovimento,conta) VALUES ('" + date + "'," + quantidade + "," + true + "," + alvo.getIdConta() + ");";
+        System.out.println(update3);
+        stmt.execute(update3);
+     
     }
 
     public void transferir(String contaAlvo, double quantidade) throws InterruptedException, SQLException {
@@ -500,4 +489,59 @@ public class Conta {
                 Poupanca.logar(cliente);
             }
         } 
+    
+        public void cadastrarConta(String codigo, String cpf, Double saldo) throws SQLException, ParseException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+
+        String findCliente = "SELECT * FROM clientes WHERE cpf = '"+ cpf + "'";
+        ResultSet resultSet = stmt.executeQuery(findCliente);
+        Cliente encontrado = null;
+        
+        while (resultSet.next()){
+            encontrado = new Cliente(resultSet.getInt("id"),resultSet.getString("nome"),resultSet.getString("cpf"),resultSet.getDate("dataNasc"));
+        }
+        
+        String update3 = "INSERT INTO conta(codigo,cliente,saldo) VALUES ('" + codigo + "','" + encontrado.getIdCliente() + "','" + saldo + "');";
+        stmt.execute(update3);
+        
+        JFrame frame = new JFrame("");
+        JOptionPane.showMessageDialog(frame,"Conta cadastrada com sucesso.",
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+    }
+    
+    public void alterarConta(String codigoVelho, String novoCodigo) throws SQLException, ParseException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+        
+        String update3 = "UPDATE conta SET codigo = '" + novoCodigo + "' WHERE codigo = '" + codigoVelho + "';";
+        System.out.println(update3);
+        stmt.execute(update3);
+        
+        JFrame frame = new JFrame("");
+        JOptionPane.showMessageDialog(frame,"Conta alterada com sucesso.",
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+    }
+    
+    public void deletarConta(String cpf) throws SQLException, ParseException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+
+        String findCliente = "SELECT * FROM clientes WHERE cpf = '"+ cpf + "'";
+        ResultSet resultSet = stmt.executeQuery(findCliente);
+        Cliente c = null; 
+        
+        while (resultSet.next()){
+            c = new Cliente(resultSet.getInt("id"),resultSet.getString("nome"),resultSet.getString("cpf"),resultSet.getDate("dataNasc"));      
+            resultSet.close();
+            break;
+        } 
+        
+        String delete3 = "DELETE FROM conta WHERE cliente = '" + c.getIdCliente() + "'";
+        stmt.execute(delete3);  
+        
+        JFrame frame = new JFrame("");
+        JOptionPane.showMessageDialog(frame,"Conta deletada com sucesso.",
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+    }
     }
