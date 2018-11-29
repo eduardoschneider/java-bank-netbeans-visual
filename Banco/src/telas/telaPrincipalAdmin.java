@@ -6,6 +6,7 @@
 package telas;
 
 import banco.Cliente;
+import banco.Poupanca;
 import banco.RoundedBorder;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -580,10 +581,11 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
                 break;
             } 
             hoje = hoje.plusDays(1);
-            System.out.println(hoje);
+            System.out.println(hoje.getDayOfMonth());
             Date hojeSQL = Date.valueOf(hoje);
             String aumentaData = "UPDATE hoje SET data = '" + hojeSQL + "' WHERE id = 1;";
             stmt.execute(aumentaData);
+            Poupanca.verificaJurosBD();
         } catch (SQLException ex) {
             Logger.getLogger(telaPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }

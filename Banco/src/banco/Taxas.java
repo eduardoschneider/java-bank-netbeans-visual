@@ -12,27 +12,33 @@ import java.math.BigDecimal;
  * @author eduardo.schneider
  */
 public class Taxas {
-    BigDecimal[] selicAnual = {new BigDecimal("9.25"), new BigDecimal("9.25"), new BigDecimal("8.25"), new BigDecimal("7.50"), new BigDecimal("7.50"), new BigDecimal("7.00"), new BigDecimal("7.00"), new BigDecimal("6.75"), new BigDecimal("6.5"), new BigDecimal("6.5"), new BigDecimal("6.5"), new BigDecimal("6.5")};//julho/x a junho/x+1
-    BigDecimal[] selicMensal = {new BigDecimal("0.8"), new BigDecimal("0.8"), new BigDecimal("0.64"), new BigDecimal("0.64"), new BigDecimal("0.57"), new BigDecimal("0.54"), new BigDecimal("0.58"), new BigDecimal("0.47"), new BigDecimal("0.53"), new BigDecimal("0.52"), new BigDecimal("0.52"), new BigDecimal("0.52")};
-    //BigDecimal[] cdiMensal = {new BigDecimal("0.7971"), new BigDecimal("0.8014"), new BigDecimal("0.6377"), new BigDecimal("0.6431"), new BigDecimal("0.5674"), new BigDecimal("0.5376"), new BigDecimal("0.5833"), new BigDecimal("0.4649"), new BigDecimal("0.5315"), new BigDecimal("0.5175"), new BigDecimal("0.5175"), new BigDecimal("0.5175")};
-    BigDecimal[] cdiDiario = {new BigDecimal("0.0265"), new BigDecimal("0.0267"), new BigDecimal("0.0531"), new BigDecimal("0.0214"), new BigDecimal("0.0189"), new BigDecimal("0.0179"), new BigDecimal("0.0194"), new BigDecimal("0.0154"), new BigDecimal("0.0177"), new BigDecimal("0.172"), new BigDecimal("0.172"), new BigDecimal("0.172")};
+    Double[] selicAnual = {9.25, 9.25, 8.25, 7.50, 7.50, 7.00, 7.00, 6.75, 6.5, 6.5, 6.5, 6.5};//julho/x a junho/x+1
+    Double[] selicMensal = {0.8, 0.8, 0.64, 0.64, 0.57, 0.54, 0.58, 0.47, 0.53, 0.52, 0.52, 0.52};
+    Double[] cdiDiario = {0.0265, 0.0267, 0.0531, 0.0214, 0.0189, 0.0179, 0.0194, 0.0154, 0.0177, 0.172, 0.172, 0.172};
 
-    public BigDecimal[] getSelicAnual() {
+
+    public Double[] getSelicAnual() {
         return selicAnual;
     }
 
-    public BigDecimal[] getSelicMensal() {
+    public void setSelicAnual(Double[] selicAnual) {
+        this.selicAnual = selicAnual;
+    }
+
+    public Double[] getSelicMensal() {
         return selicMensal;
     }
 
-//    public BigDecimal[] getCdiMensal() {
-//        return cdiMensal;
-//    }
+    public void setSelicMensal(Double[] selicMensal) {
+        this.selicMensal = selicMensal;
+    }
 
-    public BigDecimal[] getCdiDiario() {
+    public Double[] getCdiDiario() {
         return cdiDiario;
     }
 
-    
+    public void setCdiDiario(Double[] cdiDiario) {
+        this.cdiDiario = cdiDiario;
+    }
 }
 

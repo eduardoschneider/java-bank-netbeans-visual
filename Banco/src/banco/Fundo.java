@@ -5,7 +5,6 @@
  */
 package banco;
 
-import static banco.Helper.formataDecimal;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
@@ -48,10 +47,6 @@ public class Fundo {
         this.nome = nome;
     }
 
-    public BigDecimal getSaldo() {
-        return formataDecimal(saldo);
-    }
-
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
@@ -89,36 +84,36 @@ public class Fundo {
         Thread.sleep(1500);
     }
 
-    public static void verificaJuros(List<Fundo> fundos, List<Fundo_Extrato> fundoMovimento, Date dataDeHoje) {
-        LocalDate localDate = dataDeHoje.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int month = localDate.getMonthValue();
-
-        Taxas taxas = new Taxas();
-        BigDecimal taxaAtual;
-        if (month >= 7) {
-            taxaAtual = taxas.getCdiDiario()[month - 7];
-            
-        } else {
-            taxaAtual = taxas.getCdiDiario()[month + 5];
-        }
-
-        for (Fundo_Extrato movimento : fundoMovimento) {
-            movimento.setSaldo(movimento.getSaldo().add
-            (movimento.getSaldo().multiply
-            ((taxaAtual.divide
-            (new BigDecimal("100")).multiply
-            (movimento.getFundo().getPorcentagemCDI())))));
-        }
-
-        for (Fundo fundo : fundos) {
-            fundo.setSaldo(fundo.getSaldo().add
-            (fundo.getSaldo().multiply
-            (taxaAtual.divide(new BigDecimal("100").multiply(fundo.getPorcentagemCDI()),RoundingMode.HALF_UP))));
-            
-           
-
-        }
-    }
+//    public static void verificaJuros(List<Fundo> fundos, List<Fundo_Extrato> fundoMovimento, Date dataDeHoje) {
+//        LocalDate localDate = dataDeHoje.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        int month = localDate.getMonthValue();
+//
+//        Taxas taxas = new Taxas();
+//        BigDecimal taxaAtual;
+//        if (month >= 7) {
+//            taxaAtual = taxas.getCdiDiario()[month - 7];
+//            
+//        } else {
+//            taxaAtual = taxas.getCdiDiario()[month + 5];
+//        }
+//
+//        for (Fundo_Extrato movimento : fundoMovimento) {
+////            movimento.setSaldo(movimento.getSaldo().add
+////            (movimento.getSaldo().multiply
+////            ((taxaAtual.divide
+////            (new BigDecimal("100")).multiply
+////            (movimento.getFundo().getPorcentagemCDI())))));
+//        }
+//
+//        for (Fundo fundo : fundos) {
+////            fundo.setSaldo(fundo.getSaldo().add
+////            (fundo.getSaldo().multiply
+////            (taxaAtual.divide(new BigDecimal("100").multiply(fundo.getPorcentagemCDI()),RoundingMode.HALF_UP))));
+//            
+//           
+//
+//        }
+//    }
 
 //    static void investir(List<Fundo> fundos, List<Fundo_Extrato> fundoMovimento, Conta contaAtual, int contadorFundoDepositos, List<Extrato> extratos) throws InterruptedException {
 //

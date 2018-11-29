@@ -6,7 +6,6 @@
 package banco;
 
 import static banco.Cliente.getHashMd5;
-import static banco.Helper.clearScreen;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -171,65 +170,6 @@ public class Conta {
        
     }
 
-//    public static void cadastrarConta(List<Cliente> todos, List<Conta> todas, int idConta) throws InterruptedException {
-//        System.out.println("Digite o CPF do Cliente: \n");
-//        Scanner leitor = new Scanner(System.in);
-//        String cpf = leitor.next();
-//
-//        Cliente atual = null; // só p inicializar
-//        Conta conta = null; // só p inicializar
-//
-//        for (Cliente cadaCliente : todos) {
-//            if (cadaCliente.getCpfCliente().equals(cpf)) {
-//                atual = cadaCliente;
-//            }
-//        }
-//        boolean temConta = false;
-//        if (atual != null) {
-//            for (Conta cadaConta : todas) {
-//                if ((cadaConta.getCliente()).getCpfCliente().equals(cpf)) {
-//                    temConta = true;
-//                }
-//            }
-//            if (!temConta) {
-//                System.out.println("Digite uma senha para a nova conta: ");
-//                String senha = leitor.nextLine();
-//                conta = new Conta("000-0" + idConta, atual, new BigDecimal("0.0"), senha);
-//                todas.add(conta);
-//                idConta++;
-//                System.out.println("Conta cadastrada com sucesso.");
-//                System.out.println("O código é: " + conta.getCodigoConta());
-//                
-//                
-//            } else {
-//                System.out.println("Cliente já possui conta!");
-//            }
-//        } else {
-//            System.out.println("Cliente não encontrado.");
-//        }
-//        Thread.sleep(1500);
-//    }
-
-    public static Conta perguntaUsuario(List<Conta> todas) throws InterruptedException {
-        System.out.println("Digite sua conta\n");
-        Scanner leitor = new Scanner(System.in);
-        String conta = leitor.next();
-        
-        System.out.println("Digite sua senha:");
-        String senha = leitor.next();
-        
-        clearScreen();
-        for (Conta cadaConta : todas) {
-            if (cadaConta.getCodigoConta().equals(conta)) {
-                if (cadaConta.getSenha().equals(senha))
-                return cadaConta;
-            }
-        }
-        System.out.println("Código ou senha inválidos.");
-        Thread.sleep(1500);
-        return null;
-    }
-
     public String retirarExtrato() throws InterruptedException, SQLException {
         Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
         Statement stmt = (Statement)con2.createStatement();
@@ -254,7 +194,7 @@ public class Conta {
         
         return tudao;
     }
-//
+
     public void depositar(String contaAlvo, double quantidade) throws InterruptedException, SQLException {
         Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
         Statement stmt = (Statement)con2.createStatement();   
@@ -340,142 +280,6 @@ public class Conta {
         }
     }
 
-//    public static void excluirConta(List<Conta> contas) throws InterruptedException {
-//        System.out.println("Digite o CPF do dono da conta que deseja excluir:\n");
-//        Scanner leitor = new Scanner(System.in);
-//        String cpf = leitor.next();
-//        boolean achouConta = false;
-//
-//        for (Conta co : contas) {
-//            if (((co.getCliente().getCpfCliente())).equals(cpf)) {
-//                achouConta = true;
-//            }
-//        }
-//
-//        if (achouConta) {
-//            System.out.println("Conta encontrada, deseja excluir? (S/N)");
-//            String resposta = leitor.next();
-//
-//            if ((resposta.equals("s")) || (resposta.equals("S")) || (resposta.equals("sim")) || (resposta.equals("SIM"))) {
-//                for (Iterator<Conta> iter = contas.listIterator(); iter.hasNext();) {
-//                    Conta a = iter.next();
-//                    if (((a.getCliente().getCpfCliente())).equals(cpf)) {
-//                        iter.remove();
-//                    }
-//                }
-//            }
-//            System.out.println("Conta excluida com sucesso!");
-//        } else {
-//            System.out.println("Conta não encontrada.");
-//        }
-//        Thread.sleep(1500);
-//    }
-//
-//    public static void alterarConta(List<Conta> contas) throws InterruptedException {
-//        System.out.println("Digite o CPF do dono da conta que deseja alterar:\n");
-//        Scanner leitor = new Scanner(System.in);
-//        String cpf = leitor.next();
-//        boolean achouConta = false;
-//
-//        for (Conta co : contas) {
-//            if (((co.getCliente().getCpfCliente())).equals(cpf)) {
-//                achouConta = true;
-//            }
-//        }
-//
-//        if (achouConta) {
-//            System.out.println("Deseja alterar o código? ");
-//            String resposta = leitor.next();
-//            if ((resposta.equals("s")) || (resposta.equals("S")) || (resposta.equals("sim")) || (resposta.equals("SIM"))) {
-//            
-//                System.out.println("Digite o novo código da conta:");
-//                resposta = leitor.next();
-//
-//                for (Iterator<Conta> iter = contas.listIterator(); iter.hasNext();) {
-//                    Conta a = iter.next();
-//                    if (((a.getCliente().getCpfCliente())).equals(cpf)) {
-//                        a.setCodigoConta(resposta);
-//                    }
-//                }
-//                
-//                System.out.println("Conta alterada com sucesso.");
-//                Thread.sleep(1000);
-//            } 
-//            System.out.println("Deseja alterar a senha? ");
-//            resposta = leitor.next();
-//            
-//            if ((resposta.equals("s")) || (resposta.equals("S")) || (resposta.equals("sim")) || (resposta.equals("SIM"))) {
-//            
-//                System.out.println("Digite a senha anterior:");
-//                String anterior = leitor.next();
-//                
-//                System.out.println("Digite a nova senha:");
-//                resposta = leitor.next();
-//                boolean alterou = false;
-//                
-//                for (Iterator<Conta> iter = contas.listIterator(); iter.hasNext();) {
-//                    Conta a = iter.next();
-//                    if ((a.getSenha().equals(anterior)) && ((a.getCliente().getCpfCliente())).equals(cpf)) {
-//                        a.setSenha(resposta);
-//                        alterou = true;
-//                        System.out.println("Conta alterada com sucesso.");
-//                    }
-//                }
-//                
-//                if (!alterou){
-//                    System.out.println("Senha anterior incompatível.");
-//                }
-//                Thread.sleep(1000);
-//            } 
-//        }
-//        else 
-//        {
-//            System.out.println("Conta não encontrada.");
-//        }
-//    }
-//    
-//    public static void pesquisarConta(List<Conta> contas) throws InterruptedException, ParseException{
-//        System.out.println("Digite o CPF do dono da conta que deseja pesquisar:\n");
-//        Scanner leitor = new Scanner(System.in);
-//        String cpf = leitor.next();
-//        clearScreen();
-//        Conta conta = null;
-//        boolean achouConta = false;
-//        for (Conta co : contas) {
-//            if (((co.getCliente().getCpfCliente())).equals(cpf)) {
-//                conta = co;
-//                achouConta = true;
-//            }
-//        }
-//
-//        if (achouConta) {
-//            System.out.println("CPF: " + cpf);
-//            System.out.println((conta.getCliente().getNomeCliente()));
-//            System.out.println((conta.getCliente().getDataNascString()));
-//            System.out.println("Conta: " + conta.getCodigoConta());
-//            System.out.println("Saldo: R$" + conta.getSaldo());
-//            
-//            Thread.sleep(2500);
-//        } 
-//        else 
-//        {
-//            System.out.println("Conta não encontrada.");
-//        }
-//    }
-        
-    
-    
-    
-    
-    //-----------------------DATABASE
-    
-    
-    
-    
-    
-    
-    
-    
     public static void logar(Cliente cliente) throws SQLException{
         Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
         Statement stmt = (Statement)con2.createStatement();
@@ -490,21 +294,21 @@ public class Conta {
             }
         } 
     
-        public void cadastrarConta(String codigo, String cpf, Double saldo) throws SQLException, ParseException {
+    public void cadastrarConta(String codigo, String cpf, Double saldo) throws SQLException, ParseException {
         Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
         Statement stmt = (Statement)con2.createStatement();  
 
         String findCliente = "SELECT * FROM clientes WHERE cpf = '"+ cpf + "'";
         ResultSet resultSet = stmt.executeQuery(findCliente);
         Cliente encontrado = null;
-        
+
         while (resultSet.next()){
             encontrado = new Cliente(resultSet.getInt("id"),resultSet.getString("nome"),resultSet.getString("cpf"),resultSet.getDate("dataNasc"));
         }
-        
+
         String update3 = "INSERT INTO conta(codigo,cliente,saldo) VALUES ('" + codigo + "','" + encontrado.getIdCliente() + "','" + saldo + "');";
         stmt.execute(update3);
-        
+
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame,"Conta cadastrada com sucesso.",
         "Yay!",JOptionPane.INFORMATION_MESSAGE);     
@@ -544,4 +348,4 @@ public class Conta {
         JOptionPane.showMessageDialog(frame,"Conta deletada com sucesso.",
         "Yay!",JOptionPane.INFORMATION_MESSAGE);     
     }
-    }
+}

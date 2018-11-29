@@ -5,14 +5,7 @@
  */
 package banco;
 
-import static banco.Helper.clearScreen;
-import static banco.Helper.formataDecimal;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 
@@ -55,10 +48,6 @@ public class Poupanca_Extrato {
         this.contapoupanca = contapoupanca;
     }
 
-    public BigDecimal getSaldo() {
-        return formataDecimal(saldo);
-    }
-
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
@@ -93,18 +82,5 @@ public class Poupanca_Extrato {
     
     public void setStatus(boolean status) {
         this.status = status;
-    }
-    
-    public static void printaDepositos(List<Poupanca_Extrato> poupancaMovimento) throws InterruptedException {
-    clearScreen();
-    for (Poupanca_Extrato pd : poupancaMovimento) {
-        
-        System.out.println("ID: " + pd.getIdPoupancaDeposito());
-        System.out.println("SALDO: " + pd.getSaldo());
-        System.out.println("DEPÓSITO PARA: " + pd.getContapoupanca().getCliente().getCpfCliente());
-        System.out.println("------------------------------------------------");
-    }
-    Thread.sleep(1500);
-    }
-    
+    }    
 }
