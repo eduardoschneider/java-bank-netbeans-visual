@@ -6,6 +6,7 @@
 package telas;
 
 import banco.Conta;
+import banco.Poupanca;
 import java.awt.Color;
 import java.sql.SQLException;
 import javax.swing.JFrame;
@@ -16,19 +17,19 @@ import javax.swing.text.StyledDocument;
  *
  * @author eduardo.schneider
  */
-public class telaExtrato extends javax.swing.JFrame {
+public class telaExtratoPoupanca extends javax.swing.JFrame {
 
     /**
      * Creates new form telaPrincipalUsuario
      */
-    public telaExtrato() throws InterruptedException, SQLException {
+    public telaExtratoPoupanca() throws InterruptedException, SQLException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
         this.setUndecorated(true);
         this.setBackground(new Color(0,0,0,0));
         initComponents();
         setLocationRelativeTo(null); //abre a tela no centro 
         
-        txtExtrato.setText(Conta.logado.retirarExtrato());
+        txtExtrato.setText(Poupanca.logado.retirarExtrato());
         
         
     }

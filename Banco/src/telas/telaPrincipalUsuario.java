@@ -192,6 +192,11 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
                 btnConsultarPoupancaMouseExited(evt);
             }
         });
+        btnConsultarPoupanca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarPoupancaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnConsultarPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 256, 202, 70));
 
         btnDepositarPoupanca.setBackground(new java.awt.Color(255, 255, 255));
@@ -206,6 +211,11 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
                 btnDepositarPoupancaMouseExited(evt);
             }
         });
+        btnDepositarPoupanca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarPoupancaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnDepositarPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 256, 202, 70));
 
         btnSacarPoupanca.setBackground(new java.awt.Color(255, 255, 255));
@@ -218,6 +228,11 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnSacarPoupancaMouseExited(evt);
+            }
+        });
+        btnSacarPoupanca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSacarPoupancaActionPerformed(evt);
             }
         });
         jPanel1.add(btnSacarPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 256, 202, 70));
@@ -555,6 +570,33 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
             Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPagamentoMouseClicked
+
+    private void btnDepositarPoupancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarPoupancaActionPerformed
+        this.setVisible(false);
+        try {
+            new telaDeDepositoPoupanca().setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnDepositarPoupancaActionPerformed
+
+    private void btnSacarPoupancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarPoupancaActionPerformed
+        this.setVisible(false);
+        try {
+            new telaDeSaquePoupanca().setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSacarPoupancaActionPerformed
+
+    private void btnConsultarPoupancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPoupancaActionPerformed
+        this.setVisible(false);
+        try {
+            new telaExtratoPoupanca().setVisible(true);
+        } catch (InterruptedException | SQLException ex) {
+            Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnConsultarPoupancaActionPerformed
 
     /**
      * @param args the command line arguments

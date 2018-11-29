@@ -13,12 +13,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -234,5 +237,143 @@ public class Poupanca {
                 Poupanca.logado = logado;
             }
         } 
+
+    public void depositar(String codigoPoupanca, Double valor) throws SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+        
+        Date data = new Date();        
+        java.sql.Date dateDB = new java.sql.Date(data.getTime());
+        
+        Date dataTermino = new Date(2019, 12, 21);
+        java.sql.Date dateDBTermino = new java.sql.Date(dataTermino.getTime());
+        
+        String verificaPoup ="SELECT * FROM poupanca WHERE id = '" + codigoPoupanca + "'";
+        stmt.executeQuery(verificaPoup);
+        ResultSet resultSet = stmt.getResultSet();
+        boolean existe = false;
+
+        while(resultSet.next()){
+            existe = true;
+        }
+        
+        if (existe){
+            String insert = "INSERT INTO poupanca_extrato(poupanca,saldo,dtInicio,dtTermino,aniversario,status) VALUES"
+                            + " (" + codigoPoupanca + "," + valor + ",'" + dateDB + "','" + dateDBTermino + "','" + dateDB + "'," + true + ");" ;
+            stmt.execute(insert);
+
+
+            String juntaTodosOsDepositos ="SELECT * FROM poupanca_extrato WHERE poupanca = " + codigoPoupanca;
+            System.out.println(juntaTodosOsDepositos);
+            stmt.executeQuery(juntaTodosOsDepositos);
+            ResultSet resultSet2 = stmt.getResultSet();
+            Double saldoTotal = 0.0;
+
+            while(resultSet2.next()){
+                saldoTotal += resultSet2.getDouble("saldo");
+            }
+
+
+            String update = "UPDATE poupanca SET saldo = " + saldoTotal + " WHERE id = " + codigoPoupanca;
+            System.out.println(update);
+            stmt.execute(update);
+        }
+        else {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,"Poupança não encontrada.",
+            "ERRO",JOptionPane.INFORMATION_MESSAGE);  
+        }
+    
     }
+    
+    public void sacar(String codigoPoupanca, Double valor) throws SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+        
+        String verificaPoup ="SELECT * FROM poupanca_extrato WHERE poupanca = " + codigoPoupanca + " ORDER BY ID DESC";
+        stmt.executeQuery(verificaPoup);
+        ResultSet resultSet = stmt.getResultSet();
+        boolean existe = false;
+        Double ultimoDeposito = 0.0;
+        int ultimo = 0;
+        Double valorComparativo = valor;
+        while (valorComparativo != 0.0){
+            while(resultSet.next()){
+                int status = resultSet.getInt("status");
+                ultimo = resultSet.getInt("id");
+                ultimoDeposito = resultSet.getDouble("saldo");
+                if (status == 1){
+                        if (ultimoDeposito >= valorComparativo){
+                            ultimoDeposito -= valorComparativo;
+                            valorComparativo = 0.0;
+                            String update = "UPDATE poupanca_extrato SET saldo = " + ultimoDeposito + " WHERE id = " + ultimo;
+                            Statement stmt2 = (Statement)con2.createStatement();
+                            stmt2.execute(update);
+                            break;
+                        } else {
+                            valorComparativo -= ultimoDeposito;
+                            String update = "UPDATE poupanca_extrato SET saldo = 0.0 WHERE id = " + ultimo;
+                            Statement stmt3 = (Statement)con2.createStatement();
+                            stmt3.execute(update);
+                        }
+                    }
+                }
+            }
+        
+        String delete = "DELETE FROM poupanca_extrato WHERE saldo = 0.0";
+        System.out.println(delete);
+        stmt.execute(delete);
+
+        String juntaTodosOsDepositos ="SELECT * FROM poupanca_extrato WHERE poupanca = " + codigoPoupanca;
+        System.out.println(juntaTodosOsDepositos);
+        stmt.executeQuery(juntaTodosOsDepositos);
+        ResultSet resultSet2 = stmt.getResultSet();
+        Double saldoTotal = 0.0;
+
+        while(resultSet2.next()){
+            saldoTotal += resultSet2.getDouble("saldo");
+        }
+
+
+        String update = "UPDATE poupanca SET saldo = " + saldoTotal + " WHERE id = " + codigoPoupanca;
+        System.out.println(update);
+        stmt.execute(update);
+
+        JFrame frame = new JFrame("");
+        JOptionPane.showMessageDialog(frame,"Saque realizado com sucesso.",
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);  
+        
+    
+    }
+    
+    public String retirarExtrato() throws InterruptedException, SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();
+        
+        String extrato = "SELECT * FROM poupanca_extrato WHERE poupanca = " + this.getIdPoupanca();
+        stmt.executeQuery(extrato);
+        ResultSet resultSet = stmt.getResultSet();
+        String tudao = "\n";
+        String positividade = "";
+        Double saldoTotal = 0.0;
+        while(resultSet.next()){
+            saldoTotal += resultSet.getDouble("saldo");
+            if (resultSet.getInt("status") == 1) 
+            {
+                positividade = "ATIVO";
+            }
+            else
+            {
+                positividade = "INATIVO";
+            }
+                
+            tudao += "\n - R$" + resultSet.getDouble("saldo") + " - Aniversário: " + resultSet.getDate("aniversario") + " - (" + positividade + ")";
+        }
+        
+        tudao += "\n\n Saldo total: R$" + saldoTotal;
+        
+        return tudao;
+    }
+    
+ }
 
