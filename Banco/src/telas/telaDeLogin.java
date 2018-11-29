@@ -51,15 +51,12 @@ public class telaDeLogin extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         txtFocus = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        txtSenha = new javax.swing.JPasswordField();
         admRadio = new javax.swing.JRadioButton();
         txtLogin = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
@@ -70,19 +67,6 @@ public class telaDeLogin extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bank3.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 130, 130));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/moldura.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 540, 540));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 207, 34));
-
         admRadio.setBackground(new java.awt.Color(255, 255, 255));
         admRadio.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         admRadio.setText("Admin");
@@ -91,7 +75,7 @@ public class telaDeLogin extends javax.swing.JFrame {
                 admRadioActionPerformed(evt);
             }
         });
-        jPanel1.add(admRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 147, 70, -1));
+        getContentPane().add(admRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 60, 30));
 
         txtLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtLogin.setText("CPF");
@@ -104,12 +88,16 @@ public class telaDeLogin extends javax.swing.JFrame {
                 txtLoginFocusLost(evt);
             }
         });
-        jPanel1.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 207, 34));
+        getContentPane().add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 190, 34));
+
+        txtSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 190, 34));
 
         btnEntrar.setBackground(new java.awt.Color(255, 255, 255));
         btnEntrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/key.png"))); // NOI18N
-        btnEntrar.setText("  Acessar");
+        btnEntrar.setBorder(null);
         btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEntrarMouseClicked(evt);
@@ -121,13 +109,9 @@ public class telaDeLogin extends javax.swing.JFrame {
                 btnEntrarMouseExited(evt);
             }
         });
-        jPanel1.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 207, 36));
+        getContentPane().add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 50, 40));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setText("Copyright © Eduardo Schneider - 2018 - All Rights Reserved ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Sair");
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -136,12 +120,15 @@ public class telaDeLogin extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 30, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 70, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 390, 400));
+        jLabel4.setBackground(new java.awt.Color(204, 0, 51));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel4.setText("Copyright © Eduardo Schneider - 2018 - All Rights Reserved ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, 20));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/moldura_1.png"))); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 5, 540, 530));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/backgroundLOGIN.png"))); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -10, 590, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -161,7 +148,7 @@ public class telaDeLogin extends javax.swing.JFrame {
 
     private void btnEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseEntered
         btnEntrar.setBackground(Color.black);
-        btnEntrar.setForeground(Color.white);
+        
     }//GEN-LAST:event_btnEntrarMouseEntered
 
     private void btnEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseExited
@@ -238,13 +225,10 @@ public class telaDeLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton admRadio;
     private javax.swing.JButton btnEntrar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtFocus;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
