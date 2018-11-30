@@ -6,6 +6,7 @@
 package telas;
 
 import banco.Cliente;
+import banco.Fundo;
 import banco.Poupanca;
 import banco.RoundedBorder;
 import java.awt.Color;
@@ -84,7 +85,7 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fundo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bank3.png"))); // NOI18N
+        fundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bank.png"))); // NOI18N
         fundo1.setAlignmentX(0.5F);
         fundo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(fundo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 150, 130));
@@ -566,26 +567,32 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         new telaDeAlterarConta().setVisible(true);
     }//GEN-LAST:event_btnAlterarContaActionPerformed
 
+    public void aumentaDia() throws SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+        String findCliente = "SELECT * FROM hoje";
+        ResultSet resultSet = stmt.executeQuery(findCliente);
+        LocalDate hoje = null;
+
+        while (resultSet.next()){
+            hoje = resultSet.getDate("data").toLocalDate();
+            resultSet.close();
+            break;
+        } 
+        hoje = hoje.plusDays(1);
+        System.out.println(hoje.getDayOfMonth());
+        Date hojeSQL = Date.valueOf(hoje);
+        String aumentaData = "UPDATE hoje SET data = '" + hojeSQL + "' WHERE id = 1;";
+        stmt.execute(aumentaData);
+        
+        con2.close();
+    }
+    
     private void btnAvancarODiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvancarODiaActionPerformed
-        Connection con2;
         try {
-            con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
-            Statement stmt = (Statement)con2.createStatement();  
-            String findCliente = "SELECT * FROM hoje";
-            ResultSet resultSet = stmt.executeQuery(findCliente);
-            LocalDate hoje = null;
-            
-            while (resultSet.next()){
-                hoje = resultSet.getDate("data").toLocalDate();
-                resultSet.close();
-                break;
-            } 
-            hoje = hoje.plusDays(1);
-            System.out.println(hoje.getDayOfMonth());
-            Date hojeSQL = Date.valueOf(hoje);
-            String aumentaData = "UPDATE hoje SET data = '" + hojeSQL + "' WHERE id = 1;";
-            stmt.execute(aumentaData);
+            aumentaDia();
             Poupanca.verificaJurosBD();
+            Fundo.verificaJurosBD();
         } catch (SQLException ex) {
             Logger.getLogger(telaPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }

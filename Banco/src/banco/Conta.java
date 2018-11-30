@@ -142,12 +142,14 @@ public class Conta {
 
             String update4 ="INSERT INTO extrato(data,valor,tipoMovimento,conta) VALUES ('" + date + "'," + valor + "," + false + "," + this.getIdConta() + ");";
             stmt.execute(update4);
+            con2.close();
         }
         else
         {
             JFrame frame = new JFrame("");
             JOptionPane.showMessageDialog(frame,"Saldo insuficiente para realizar a transação.",
             "ERRO",JOptionPane.INFORMATION_MESSAGE);
+            con2.close();
         }
     }
 
@@ -167,7 +169,8 @@ public class Conta {
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame,"Seu saldo é de R$" + saldo,
         "Saldo",JOptionPane.INFORMATION_MESSAGE);
-       
+        
+       con2.close();
     }
 
     public String retirarExtrato() throws InterruptedException, SQLException {
@@ -192,6 +195,7 @@ public class Conta {
             tudao = tudao + "\n" + resultSet.getDate("data") + " - R$" + resultSet.getDouble("valor") + " - (" + positividade + ")";
         }
         
+        con2.close();
         return tudao;
     }
 
@@ -216,6 +220,8 @@ public class Conta {
         String update3 ="INSERT INTO extrato(data,valor,tipoMovimento,conta) VALUES ('" + date + "'," + quantidade + "," + true + "," + alvo.getIdConta() + ");";
         System.out.println(update3);
         stmt.execute(update3);
+        
+        con2.close();
      
     }
 
@@ -246,12 +252,14 @@ public class Conta {
             stmt.execute(update3);
             String update4 ="INSERT INTO extrato(data,valor,tipoMovimento,conta) VALUES ('" + date + "'," + quantidade + "," + false + "," + this.getIdConta() + ");";
             stmt.execute(update4);
+            con2.close();
         }
         else
         {
             JFrame frame = new JFrame("");
             JOptionPane.showMessageDialog(frame,"Saldo insuficiente para realizar a transação.",
             "ERRO",JOptionPane.INFORMATION_MESSAGE);
+            con2.close();
         }
     }
         
@@ -271,12 +279,14 @@ public class Conta {
             String update3 ="INSERT INTO extrato(data,valor,tipoMovimento,conta) VALUES ('" + date + "'," + quantidade + "," + true + "," + this.getIdConta() + ");";
             System.out.println(update3);
             stmt.execute(update3);
+            con2.close();
         }
         else
         {
             JFrame frame = new JFrame("");
             JOptionPane.showMessageDialog(frame,"Saldo insuficiente para realizar a transação.",
             "ERRO",JOptionPane.INFORMATION_MESSAGE);
+            con2.close();
         }
     }
 
@@ -292,6 +302,8 @@ public class Conta {
                 Conta.logado = logado;
                 Poupanca.logar(cliente);
             }
+        
+        con2.close();
         } 
     
     public void cadastrarConta(String codigo, String cpf, Double saldo) throws SQLException, ParseException {
@@ -311,7 +323,9 @@ public class Conta {
 
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame,"Conta cadastrada com sucesso.",
-        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);    
+        
+        con2.close();
     }
     
     public void alterarConta(String codigoVelho, String novoCodigo) throws SQLException, ParseException {
@@ -324,7 +338,9 @@ public class Conta {
         
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame,"Conta alterada com sucesso.",
-        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);    
+        
+        con2.close();
     }
     
     public void deletarConta(String cpf) throws SQLException, ParseException {
@@ -346,6 +362,8 @@ public class Conta {
         
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame,"Conta deletada com sucesso.",
-        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+        "Yay!",JOptionPane.INFORMATION_MESSAGE);
+        
+        con2.close();
     }
 }

@@ -98,42 +98,6 @@ public class Poupanca {
         return Objects.equals(this.cliente, other.cliente);
     }    
     
-//    static void verificaJuros(List<Poupanca> poupancas, List<Poupanca_Extrato> poupancaMovimento, Date dia) {
-//       LocalDate localDate = dia.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//       int month = localDate.getMonthValue();
-//        
-//        Taxas taxas = new Taxas();
-//        BigDecimal taxaAtual;
-//        
-//        if (month >= 7){
-//            taxaAtual = taxas.getSelicMensal()[month - 7];
-//            if ((taxas.getSelicAnual()[month - 7]).compareTo(new BigDecimal("8.5")) < 0)
-//                taxaAtual = taxas.getSelicMensal()[month - 7].multiply(new BigDecimal("0.7"));
-//        } else 
-//        {
-//            taxaAtual = taxas.getSelicMensal()[month + 5];
-//            if ((taxas.getSelicAnual()[month + 5]).compareTo(new BigDecimal("8.5")) < 0)
-//                taxaAtual = taxas.getSelicMensal()[month + 5].multiply(new BigDecimal("0.7"));
-//        }
-//        
-//        for (Poupanca_Extrato po : poupancaMovimento){
-//            if (po.getStatus()){
-//                Date niver = po.getAniversario();
-//                localDate = niver.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//                int day = localDate.getDayOfYear();
-//                localDate = dia.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//                int dayToday = localDate.getDayOfYear();
-//                
-//                if ((dayToday - day) % 30 == 0){
-////                    po.setSaldo(po.getSaldo().add(po.getSaldo().multiply(taxaAtual.divide(new BigDecimal("100")))));
-////                    BigDecimal lucro = po.getSaldo().multiply(taxaAtual.divide(new BigDecimal("100")));
-////                    Poupanca a = po.getContapoupanca();
-////                    a.setSaldo(a.getSaldo().add(lucro));
-//                }
-//            }
-//        }  
-//   }
-    
     public static void verificaJurosBD() throws SQLException {
        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
        Statement stmt = (Statement)con2.createStatement();
@@ -174,19 +138,9 @@ public class Poupanca {
                }
            }
         }
+        con2.close();
     } 
    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //-----------------------DATABASE
     public static void logar(Cliente cliente) throws SQLException {
         Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
         Statement stmt = (Statement)con2.createStatement();
@@ -198,7 +152,9 @@ public class Poupanca {
             Poupanca logado = new Poupanca(resultSet.getString("id"), cliente, new BigDecimal(resultSet.getDouble("saldo")));
                 Poupanca.logado = logado;
             }
-        } 
+        
+        con2.close();
+    } 
 
     public void depositar(String codigoPoupanca, Double valor) throws SQLException {
         Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
@@ -239,11 +195,13 @@ public class Poupanca {
             String update = "UPDATE poupanca SET saldo = " + saldoTotal + " WHERE id = " + codigoPoupanca;
             System.out.println(update);
             stmt.execute(update);
+            con2.close();
         }
         else {
             JFrame frame = new JFrame("");
             JOptionPane.showMessageDialog(frame,"Poupança não encontrada.",
             "ERRO",JOptionPane.INFORMATION_MESSAGE);  
+            con2.close();
         }
     
     }
@@ -305,7 +263,7 @@ public class Poupanca {
         JOptionPane.showMessageDialog(frame,"Saque realizado com sucesso.",
         "Yay!",JOptionPane.INFORMATION_MESSAGE);  
         
-    
+        con2.close();
     }
     
     public String retirarExtrato() throws InterruptedException, SQLException {
@@ -334,6 +292,7 @@ public class Poupanca {
         
         tudao += "\n\n Saldo total: R$" + saldoTotal;
         
+        con2.close();
         return tudao;
     }
     

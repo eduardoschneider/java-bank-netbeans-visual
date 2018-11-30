@@ -94,10 +94,11 @@ public class Cliente {
         if ((a.equals(login)) && (b.equals(senha))){
             Cliente.logado = logado;
             Conta.logar(logado);
+            con2.close();
             return true;
         }
     }
-
+    con2.close();
     return false;
 }
 
@@ -125,7 +126,9 @@ public class Cliente {
 
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame,"Usuário inserido com sucesso.",
-        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+        "Yay!",JOptionPane.INFORMATION_MESSAGE); 
+        
+        con2.close();
     }
 
     public void alterarCliente(String nome, String cpf, String dataNasc, String login, String senha) throws SQLException, ParseException {
@@ -150,7 +153,9 @@ public class Cliente {
 
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame,"Usuário alterado com sucesso.",
-        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+        "Yay!",JOptionPane.INFORMATION_MESSAGE); 
+        
+        con2.close();
     }
 
     public void deletarCliente(String cpf) throws SQLException, ParseException {
@@ -169,7 +174,9 @@ public class Cliente {
 
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame,"Cliente deletado com sucesso.",
-        "Yay!",JOptionPane.INFORMATION_MESSAGE);     
+        "Yay!",JOptionPane.INFORMATION_MESSAGE); 
+        
+        con2.close();
     }
 }
 
