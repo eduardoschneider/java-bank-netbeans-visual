@@ -287,7 +287,7 @@ public class Poupanca {
                 positividade = "INATIVO";
             }
                 
-            tudao += "\n - R$" + resultSet.getDouble("saldo") + " - Aniversário: " + resultSet.getDate("aniversario") + " - (" + positividade + ")";
+            tudao += "\n - R$" + String.format("%.2f", resultSet.getDouble("saldo")) + " - Aniversário: " + resultSet.getDate("aniversario") + " - (" + positividade + ")";
         }
         
         tudao += "\n\n Saldo total: R$" + saldoTotal;

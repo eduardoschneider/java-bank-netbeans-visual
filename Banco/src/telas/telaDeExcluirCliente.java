@@ -6,8 +6,6 @@
 package telas;
 
 import banco.Cliente;
-import banco.Conta;
-import banco.Poupanca;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -32,6 +30,8 @@ public class telaDeExcluirCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null); //abre a tela no centro 
         
         PromptSupport.setPrompt("CPF", txtCPF);
+        
+        txtCPF.setBackground(new Color(0, 0, 0, 0));
     }
 
     /**
@@ -52,13 +52,14 @@ public class telaDeExcluirCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Digite o CPF que deseja excluir:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 210, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 210, 30));
 
         txtCPF.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 210, 30));
+        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 210, 30));
 
         cancelaCadastroButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelaCadastroButton.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -69,7 +70,7 @@ public class telaDeExcluirCliente extends javax.swing.JFrame {
                 cancelaCadastroButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 210, 40));
+        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 90, 40));
 
         confirmaDeletarButton1.setBackground(new java.awt.Color(0, 153, 0));
         confirmaDeletarButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -85,10 +86,10 @@ public class telaDeExcluirCliente extends javax.swing.JFrame {
                 confirmaDeletarButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(confirmaDeletarButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 210, 40));
+        getContentPane().add(confirmaDeletarButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 90, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/prancheta.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 510));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bgcrud.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

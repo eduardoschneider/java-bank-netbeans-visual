@@ -5,9 +5,7 @@
  */
 package telas;
 
-import banco.Cliente;
 import banco.Conta;
-import banco.Poupanca;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -33,6 +31,9 @@ public class telaDeAlterarConta extends javax.swing.JFrame {
         
         PromptSupport.setPrompt("Código Novo", txtCodigoNovo);
         PromptSupport.setPrompt("Código Atual", txtCodigoVelho);
+        
+        txtCodigoNovo.setBackground(new Color(0, 0, 0, 0));
+        txtCodigoVelho.setBackground(new Color(0, 0, 0, 0));
     }
 
     /**
@@ -55,22 +56,24 @@ public class telaDeAlterarConta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Digite a código que deseja alterar:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 210, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 210, -1));
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Novo código:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 210, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 210, -1));
 
         txtCodigoNovo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCodigoNovo.setToolTipText("");
         txtCodigoNovo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtCodigoNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 210, 30));
+        getContentPane().add(txtCodigoNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 210, 30));
 
         txtCodigoVelho.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCodigoVelho.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtCodigoVelho, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 210, 30));
+        getContentPane().add(txtCodigoVelho, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 210, 30));
 
         cancelaCadastroButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelaCadastroButton.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -81,7 +84,7 @@ public class telaDeAlterarConta extends javax.swing.JFrame {
                 cancelaCadastroButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 210, 40));
+        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 90, 40));
 
         confirmaAlterarButton1.setBackground(new java.awt.Color(0, 153, 0));
         confirmaAlterarButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -92,10 +95,10 @@ public class telaDeAlterarConta extends javax.swing.JFrame {
                 confirmaAlterarButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(confirmaAlterarButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 210, 40));
+        getContentPane().add(confirmaAlterarButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 90, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/prancheta.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 510));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bgcrud.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

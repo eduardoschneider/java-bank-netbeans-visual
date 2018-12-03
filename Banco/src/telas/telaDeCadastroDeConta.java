@@ -5,9 +5,7 @@
  */
 package telas;
 
-import banco.Cliente;
 import banco.Conta;
-import banco.Poupanca;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -33,6 +31,9 @@ public class telaDeCadastroDeConta extends javax.swing.JFrame {
         
         PromptSupport.setPrompt("Código da Conta", txtCodigo);
         PromptSupport.setPrompt("CPF", txtCPF);
+        
+        txtCPF.setBackground(new Color(0, 0, 0, 0));
+        txtCodigo.setBackground(new Color(0, 0, 0, 0));
     }
 
     /**
@@ -44,6 +45,7 @@ public class telaDeCadastroDeConta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         txtCPF = new javax.swing.JTextField();
         cancelaCadastroButton = new javax.swing.JButton();
@@ -53,14 +55,19 @@ public class telaDeCadastroDeConta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Digite os dados de cadastro:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 210, -1));
+
         txtCodigo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCodigo.setToolTipText("");
         txtCodigo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 210, 30));
+        getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 210, 30));
 
         txtCPF.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 210, 30));
+        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 210, 30));
 
         cancelaCadastroButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelaCadastroButton.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -71,7 +78,7 @@ public class telaDeCadastroDeConta extends javax.swing.JFrame {
                 cancelaCadastroButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 210, 40));
+        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 90, 40));
 
         confirmaCadastroButton1.setBackground(new java.awt.Color(0, 153, 0));
         confirmaCadastroButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -82,10 +89,10 @@ public class telaDeCadastroDeConta extends javax.swing.JFrame {
                 confirmaCadastroButton1MouseClicked(evt);
             }
         });
-        getContentPane().add(confirmaCadastroButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 210, 40));
+        getContentPane().add(confirmaCadastroButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 90, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/prancheta.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 510));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bgcrud.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,6 +121,7 @@ public class telaDeCadastroDeConta extends javax.swing.JFrame {
     private javax.swing.JButton cancelaCadastroButton;
     private javax.swing.JButton confirmaCadastroButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCodigo;
     // End of variables declaration//GEN-END:variables

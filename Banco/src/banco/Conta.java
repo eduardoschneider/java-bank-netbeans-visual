@@ -192,7 +192,7 @@ public class Conta {
                 positividade = "+++";
             }
                 
-            tudao = tudao + "\n" + resultSet.getDate("data") + " - R$" + resultSet.getDouble("valor") + " - (" + positividade + ")";
+            tudao = tudao + "\n" + resultSet.getDate("data") + " - R$" + String.format("%.2f", resultSet.getDouble("valor")) + " - (" + positividade + ")";
         }
         
         con2.close();
