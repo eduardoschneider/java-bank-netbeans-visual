@@ -16,7 +16,9 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -25,6 +27,7 @@ import javax.swing.JOptionPane;
  * @author eduardo.schneider
  */
 public class Cliente {
+
     private int idCliente;
     private String nomeCliente;
     private String cpfCliente;
@@ -177,6 +180,23 @@ public class Cliente {
         "Yay!",JOptionPane.INFORMATION_MESSAGE); 
         
         con2.close();
+    }
+    
+    public static List<String> pesquisar(String cpf) throws SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement(); 
+        
+        String findCliente = "SELECT * FROM clientes WHERE cpf = '"+ cpf + "'";
+        ResultSet resultSet = stmt.executeQuery(findCliente);
+        List<String> lista = new ArrayList();
+        while (resultSet.next()){
+            lista.add(resultSet.getString("nome"));
+            lista.add(resultSet.getDate("dataNasc") + "");
+            lista.add(resultSet.getString("login"));
+        }
+        
+        con2.close();
+        return lista;
     }
 }
 

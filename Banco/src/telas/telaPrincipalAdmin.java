@@ -154,6 +154,11 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
                 btnPesquisaContaMouseExited(evt);
             }
         });
+        btnPesquisaConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaContaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPesquisaConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 110, 86));
 
         btnExcluirConta.setBackground(new java.awt.Color(255, 255, 255));
@@ -297,6 +302,11 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnPesquisaClienteMouseExited(evt);
+            }
+        });
+        btnPesquisaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaClienteActionPerformed(evt);
             }
         });
         jPanel1.add(btnPesquisaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 110, 86));
@@ -610,6 +620,16 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     private void btnCadastroContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroContaMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastroContaMouseEntered
+
+    private void btnPesquisaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaClienteActionPerformed
+        this.setVisible(false);
+        new telaDeExibirClientes().setVisible(true);
+    }//GEN-LAST:event_btnPesquisaClienteActionPerformed
+
+    private void btnPesquisaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaContaActionPerformed
+        this.setVisible(false);
+        new telaDeExibirConta().setVisible(true);
+    }//GEN-LAST:event_btnPesquisaContaActionPerformed
 
     /**
      * @param args the command line arguments

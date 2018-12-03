@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -365,5 +366,27 @@ public class Conta {
         "Yay!",JOptionPane.INFORMATION_MESSAGE);
         
         con2.close();
+    }
+    
+    public static List<String> pesquisar(String codigo) throws SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement(); 
+        
+        String findConta = "SELECT * FROM conta WHERE codigo = '"+ codigo + "'";
+        ResultSet resultSet = stmt.executeQuery(findConta);
+        List<String> lista = new ArrayList();
+        while (resultSet.next()){
+            String findCliente = "SELECT * FROM clientes WHERE id = '"+ resultSet.getInt("cliente") + "'";
+            Statement stmt2 = (Statement)con2.createStatement(); 
+            ResultSet resultSet2 = stmt2.executeQuery(findCliente);
+            while (resultSet2.next()){
+                lista.add(resultSet2.getString("nome"));
+            }
+            lista.add(resultSet.getDouble("saldo")+"");
+        }
+        
+        con2.close();
+        
+        return lista;
     }
 }
