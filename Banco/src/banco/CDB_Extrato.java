@@ -5,10 +5,8 @@
  */
 package banco;
 
-import static java.lang.System.in;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 /**
  *

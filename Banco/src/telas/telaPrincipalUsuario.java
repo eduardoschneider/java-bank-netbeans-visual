@@ -504,7 +504,12 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExtratoMouseExited
 
     private void btnCdbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCdbActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        try {
+            new telaCDB().setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(telaPrincipalUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnCdbActionPerformed
 
     private void btnDepositarPoupancaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDepositarPoupancaMouseEntered

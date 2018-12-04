@@ -77,6 +77,9 @@ public class Fundo {
         System.out.println(insert);
         stmt.execute(insert);
         
+        String updateConta = "UPDATE conta SET saldo = saldo -"+ valor +"WHERE id = " + Conta.logado.getIdConta();
+        stmt.execute(updateConta);
+        
         String juntaTodosOsDepositos ="SELECT * FROM fundo_extrato WHERE fundo = " + codigoFundo;
         System.out.println(juntaTodosOsDepositos);
         stmt.executeQuery(juntaTodosOsDepositos);
@@ -126,8 +129,11 @@ public class Fundo {
                             Statement stmt3 = (Statement)con2.createStatement();
                             stmt3.execute(update);
                         }
+                        
                     }
                 }
+                String updateConta = "UPDATE conta SET saldo = saldo +"+ valor +"WHERE id = " + Conta.logado.getIdConta();
+                stmt.execute(updateConta);
             }
         
         String delete = "DELETE FROM fundo_extrato WHERE saldo = 0.0";

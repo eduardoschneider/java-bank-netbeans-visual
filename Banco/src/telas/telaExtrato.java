@@ -63,7 +63,7 @@ public class telaExtrato extends javax.swing.JFrame {
                 btnVoltarMouseExited(evt);
             }
         });
-        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 270, 30));
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 70, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 200));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

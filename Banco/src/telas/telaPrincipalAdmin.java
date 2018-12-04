@@ -5,6 +5,7 @@
  */
 package telas;
 
+import banco.CDB;
 import banco.Cliente;
 import banco.Fundo;
 import banco.Poupanca;
@@ -603,6 +604,12 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
             aumentaDia();
             Poupanca.verificaJurosBD();
             Fundo.verificaJurosBD();
+            CDB.verificaJurosBD();
+            Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+            Statement stmt = (Statement)con2.createStatement(); 
+            String update2 = "UPDATE cdb SET vencimento = vencimento - 1";
+            stmt.execute(update2);
+            con2.close();
         } catch (SQLException ex) {
             Logger.getLogger(telaPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }

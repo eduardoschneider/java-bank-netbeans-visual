@@ -6,13 +6,16 @@
 package banco;
 
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  *
@@ -78,31 +81,130 @@ public class CDB {
         this.porcentagemCDI = porcentagemCDI;
     }
     
-    
+    public static void depositarCDB(String codigoCDB, Double valor) throws SQLException{
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();   
+        
+        String insert = "INSERT INTO cdb_extrato(cdb,cliente,saldo,status)"
+                        + " VALUES (" + codigoCDB +"," + Cliente.logado.getIdCliente() + "," + valor + "," + 1 + ");";
+        System.out.println(insert);
+        stmt.execute(insert);
+        
+        String updateConta = "UPDATE conta SET saldo = saldo -"+ valor +"WHERE id = " + Conta.logado.getIdConta();
+        stmt.execute(updateConta);
+        
+        String juntaTodosOsDepositos ="SELECT * FROM cdb_extrato WHERE cdb = " + codigoCDB;
+        System.out.println(juntaTodosOsDepositos);
+        stmt.executeQuery(juntaTodosOsDepositos);
+        ResultSet resultSet2 = stmt.getResultSet();
+        Double saldoTotal = 0.0;
+        
+        while(resultSet2.next()){
+            saldoTotal += resultSet2.getDouble("saldo");
+        }
 
-    public static void cadastrarCDB(List<CDB> cdbs, int idAtual) throws InterruptedException {
-
-        System.out.println("Digite o nome do CDB:");
-        Scanner leitor = new Scanner(System.in);
-        String nome = leitor.nextLine();
-
-        System.out.println("Digite o prazo do CDB:");
-        int vencimento = Integer.parseInt(leitor.next());
+        String update = "UPDATE cdb SET saldo = " + saldoTotal + " WHERE id = " + codigoCDB;
+        System.out.println(update);
+        stmt.execute(update);
         
-        Date venciment = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(venciment);
-        c.add(Calendar.DATE, vencimento);
-        venciment = c.getTime();
-        
-        System.out.println("Digite a % do CDI de juros que serão aplicados: (Exemplo: 95)");
-        BigDecimal porcentagem = new BigDecimal(leitor.next());
-        
-        CDB cdb = new CDB(idAtual, nome, new BigDecimal("0.0"), venciment, porcentagem.divide(new BigDecimal("100")));
-        
-        cdbs.add(cdb);
-        
-        System.out.println("CDB cadastrado com sucesso.");
-        Thread.sleep(1500);
+        con2.close();
     }
+    
+    public static void atualizaSaldoTotal(String codigoCDB) throws SQLException {
+        
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();  
+        String juntaTodosOsDepositos ="SELECT * FROM cdb_extrato WHERE cdb = " + codigoCDB;
+        System.out.println(juntaTodosOsDepositos);
+        stmt.executeQuery(juntaTodosOsDepositos);
+        ResultSet resultSet2 = stmt.getResultSet();
+        Double saldoTotal = 0.0;
+
+        while(resultSet2.next()){
+            saldoTotal += resultSet2.getDouble("saldo");
+        }
+
+        String update = "UPDATE cdb SET saldo = " + saldoTotal + " WHERE id = " + codigoCDB;
+        stmt.execute(update);
+        
+        con2.close();
+    }
+    
+    public static void verificaJurosBD() throws SQLException {
+       Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+       Statement stmt = (Statement)con2.createStatement();
+       String consulta ="SELECT data FROM hoje WHERE id = 1";
+       ResultSet resultSet = stmt.executeQuery(consulta);
+       LocalDate hoje = null;
+        while (resultSet.next()){
+           hoje = resultSet.getDate("data").toLocalDate();
+        }
+       int month = hoje.getMonthValue();
+       Taxas taxas = new Taxas();
+       Double taxaAtual;
+       
+       if (month >= 7){
+            taxaAtual = taxas.getSelicMensal()[month - 7];
+            if ((taxas.getSelicAnual()[month - 7]).compareTo(8.5) < 0)
+                taxaAtual = (taxas.getCdiDiario()[month - 7]);
+        } else 
+        {
+            taxaAtual = taxas.getSelicMensal()[month + 5];
+            if ((taxas.getSelicAnual()[month + 5]).compareTo(8.5) < 0)
+                taxaAtual = (taxas.getCdiDiario()[month + 5]);
+        }
+       
+       String pegaMovimentos = "SELECT * FROM cdb_extrato";
+       ResultSet resultSet2 = stmt.executeQuery(pegaMovimentos);
+       
+        while (resultSet2.next()){
+           int status = resultSet2.getInt("status");
+           String codigoCDB = resultSet2.getInt("cdb") + "";
+           Statement stmtx = (Statement)con2.createStatement();
+           String pegaPorcentagem = " SELECT porcentagem FROM cdb WHERE id = " + resultSet2.getInt("cdb");
+           ResultSet resultSetx = stmtx.executeQuery(pegaPorcentagem);
+           int porcentagem = 0;
+           while (resultSetx.next()){
+                 porcentagem = resultSetx.getInt("porcentagem");
+           }
+            System.out.println(porcentagem);
+           if (status == 1){
+                Statement stmt2 = (Statement)con2.createStatement();
+                String update3 = "UPDATE cdb_extrato SET saldo = saldo + (saldo * (" + taxaAtual / 100 + ") * " + porcentagem * 0.01 + ")";
+                System.out.println(update3);
+                stmt2.execute(update3);
+               }
+           atualizaSaldoTotal(codigoCDB);
+           }
+        //
+            
+           String destruidor = "SELECT * FROM cdb WHERE vencimento = 0;";
+           ResultSet lalala = stmt.executeQuery(destruidor);
+            
+           while (lalala.next()){
+              Statement stmt3 = (Statement)con2.createStatement();
+              String destruidor2 = "SELECT * FROM cdb_extrato WHERE cdb = " + lalala.getInt("id") + ";";
+              ResultSet lalala2 = stmt3.executeQuery(destruidor2);
+              while (lalala2.next()){
+                    Statement stmt4 = (Statement)con2.createStatement();
+                    String destruidor3 = "SELECT * FROM conta WHERE cliente = " + lalala2.getInt("cliente") + ";";
+                    ResultSet lalala3 = stmt4.executeQuery(destruidor3);
+                    int idConta = 0;
+                    while(lalala3.next()){
+                        idConta = lalala3.getInt("id");
+                    }
+
+                    String depositador = "UPDATE conta SET saldo = saldo + " + lalala2.getDouble("saldo") + " WHERE id = " + idConta + ";";
+                    stmt4.execute(depositador);
+                    String demolidor = "DELETE FROM cdb_extrato WHERE id = " + lalala2.getInt("id");
+                    stmt4.execute(demolidor);
+              }
+           }
+            
+           Statement stmt5 = (Statement)con2.createStatement();
+           String demolidor2 = "DELETE FROM cdb WHERE vencimento = 0";
+           stmt5.execute(demolidor2);
+           con2.close();
+        }
+
 }
