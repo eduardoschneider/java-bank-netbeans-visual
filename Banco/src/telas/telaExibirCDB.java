@@ -6,7 +6,6 @@
 package telas;
 
 import banco.CDB;
-import banco.Conta;
 import java.awt.Color;
 import java.sql.SQLException;
 import javax.swing.JFrame;

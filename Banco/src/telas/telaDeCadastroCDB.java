@@ -6,10 +6,8 @@
 package telas;
 
 import banco.CDB;
-import banco.Cliente;
 import java.awt.Color;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;

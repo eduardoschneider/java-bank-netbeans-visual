@@ -5,14 +5,10 @@
  */
 package telas;
 
-import banco.Conta;
 import banco.Poupanca;
 import java.awt.Color;
 import java.sql.SQLException;
 import javax.swing.JFrame;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 /**
  *
  * @author eduardo.schneider

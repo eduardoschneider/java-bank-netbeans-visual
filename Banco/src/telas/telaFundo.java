@@ -5,7 +5,6 @@
  */
 package telas;
 
-import banco.Conta;
 import banco.Fundo;
 import java.awt.Color;
 import java.sql.SQLException;
