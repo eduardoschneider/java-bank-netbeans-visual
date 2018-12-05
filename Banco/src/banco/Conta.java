@@ -186,11 +186,11 @@ public class Conta {
         while(resultSet.next()){
             if (resultSet.getInt("tipoMovimento") == 1) 
             {
-                positividade = "---";
+                positividade = "+++";
             }
             else
             {
-                positividade = "+++";
+                positividade = "---";
             }
                 
             tudao = tudao + "\n" + resultSet.getDate("data") + " - R$" + String.format("%.2f", resultSet.getDouble("valor")) + " - (" + positividade + ")";
@@ -277,7 +277,7 @@ public class Conta {
             String update1 ="UPDATE conta SET saldo = saldo - " + quantidade + "WHERE codigo = '" + this.getCodigoConta() + "'";
             stmt.execute(update1);
 
-            String update3 ="INSERT INTO extrato(data,valor,tipoMovimento,conta) VALUES ('" + date + "'," + quantidade + "," + true + "," + this.getIdConta() + ");";
+            String update3 ="INSERT INTO extrato(data,valor,tipoMovimento,conta) VALUES ('" + date + "'," + quantidade + "," + false + "," + this.getIdConta() + ");";
             System.out.println(update3);
             stmt.execute(update3);
             con2.close();
@@ -375,7 +375,9 @@ public class Conta {
         String findConta = "SELECT * FROM conta WHERE codigo = '"+ codigo + "'";
         ResultSet resultSet = stmt.executeQuery(findConta);
         List<String> lista = new ArrayList();
+        boolean existe = false;
         while (resultSet.next()){
+            existe = true;
             String findCliente = "SELECT * FROM clientes WHERE id = '"+ resultSet.getInt("cliente") + "'";
             Statement stmt2 = (Statement)con2.createStatement(); 
             ResultSet resultSet2 = stmt2.executeQuery(findCliente);
@@ -383,6 +385,14 @@ public class Conta {
                 lista.add(resultSet2.getString("nome"));
             }
             lista.add(resultSet.getDouble("saldo")+"");
+        }
+        
+        if (!existe){
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,"Conta inexistente.",
+            "ERRO!",JOptionPane.INFORMATION_MESSAGE);
+            
+            return null;
         }
         
         con2.close();

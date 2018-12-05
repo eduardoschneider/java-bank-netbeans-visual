@@ -78,11 +78,6 @@ public class telaDeSaque extends javax.swing.JFrame {
         confirmaSaqueButton.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         confirmaSaqueButton.setForeground(new java.awt.Color(255, 255, 255));
         confirmaSaqueButton.setText("OK");
-        confirmaSaqueButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                confirmaSaqueButtonMouseClicked(evt);
-            }
-        });
         confirmaSaqueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmaSaqueButtonActionPerformed(evt);
@@ -123,7 +118,13 @@ public class telaDeSaque extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmaSaqueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaSaqueButtonActionPerformed
-
+        
+        try {
+            Conta.logado.sacar(Double.parseDouble(txtValor.getText()));
+        } catch (SQLException ex) {
+            Logger.getLogger(telaDeSaque.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
         mao.setVisible(true);
         card.setVisible(true);
         maoComCartao.setVisible(false);
@@ -181,14 +182,6 @@ public class telaDeSaque extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         close();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void confirmaSaqueButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmaSaqueButtonMouseClicked
-        try {
-            Conta.logado.sacar(Double.parseDouble(txtValor.getText()));
-        } catch (SQLException ex) {
-            Logger.getLogger(telaDeSaque.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_confirmaSaqueButtonMouseClicked
 
     
     public void close(){
