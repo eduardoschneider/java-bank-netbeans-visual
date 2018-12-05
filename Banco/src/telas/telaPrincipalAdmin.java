@@ -85,10 +85,10 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fundo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bank.png"))); // NOI18N
+        fundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eye.png"))); // NOI18N
         fundo1.setAlignmentX(0.5F);
         fundo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(fundo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 150, 130));
+        getContentPane().add(fundo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 150, 150));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
