@@ -22,7 +22,7 @@ import java.util.Date;
  * @author eduardo.schneider
  */
 public class CDB {
-
+    
     private int id;
     private String nome;
     private BigDecimal saldo;
@@ -218,4 +218,20 @@ public class CDB {
             con2.close();
         }
 
+        public static String pegaTudo() throws SQLException {
+        Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+        Statement stmt = (Statement)con2.createStatement();
+        
+        String extrato = "SELECT * FROM cdb_extrato";
+        stmt.executeQuery(extrato);
+        ResultSet resultSet = stmt.getResultSet();
+        String tudao = "";
+        while(resultSet.next()){  
+            tudao = tudao + "\nCDB:" + resultSet.getInt("cdb") + " - R$" + String.format("%.2f", resultSet.getDouble("saldo")) + " - (STATUS:" + resultSet.getInt("status") + ")";
+        }
+        
+        con2.close();
+        return tudao;
+
+      }
 }

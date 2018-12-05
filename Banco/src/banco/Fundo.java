@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  * @author eduardo.schneider
  */
 public class Fundo {
-
+    
     private int id;
     private String nome;
     private BigDecimal saldo;
@@ -112,6 +112,7 @@ public class Fundo {
         Double valorComparativo = valor;
         while (valorComparativo != 0.0){
             while(resultSet.next()){
+                existe = true;
                 int status = resultSet.getInt("status");
                 ultimo = resultSet.getInt("id");
                 ultimoDeposito = resultSet.getDouble("saldo");
@@ -132,20 +133,30 @@ public class Fundo {
                         
                     }
                 }
+            if (existe){
                 String updateConta = "UPDATE conta SET saldo = saldo +"+ valor +"WHERE id = " + Conta.logado.getIdConta();
                 stmt.execute(updateConta);
+                
+            } else {
+                break;
             }
-        
-        String delete = "DELETE FROM fundo_extrato WHERE saldo = 0.0";
-        System.out.println(delete);
-        stmt.execute(delete);
+            }
+        if (existe){
+            String delete = "DELETE FROM fundo_extrato WHERE saldo = 0.0";
+            System.out.println(delete);
+            stmt.execute(delete);
 
-        atualizaSaldoTotal(codigoFundo);
+            atualizaSaldoTotal(codigoFundo);
 
-        JFrame frame = new JFrame("");
-        JOptionPane.showMessageDialog(frame,"Saque realizado com sucesso.",
-        "Yay!",JOptionPane.INFORMATION_MESSAGE);  
-       
+
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,"Saque realizado com sucesso.",
+            "Yay!",JOptionPane.INFORMATION_MESSAGE);  
+        } else {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,"Você não pode realizar um saque.",
+            "ERRO",JOptionPane.INFORMATION_MESSAGE); 
+        }
         con2.close();
     }
     
@@ -220,4 +231,32 @@ public class Fundo {
         
            con2.close();
         }
+    
+    
+        public static void cadastrar(String nomeFundo, String porcentagem) throws SQLException {
+            Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+            Statement stmt = (Statement)con2.createStatement();
+            
+            String insert = "INSERT INTO fundo(nome,saldo,porcentagem) VALUES ('" + nomeFundo + "', 0.0," + porcentagem + ");";
+            stmt.execute(insert);
+            
+            con2.close();
+        }
+
+        public static String pegaTudo() throws SQLException {
+            Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+            Statement stmt = (Statement)con2.createStatement();
+
+            String extrato = "SELECT * FROM fundo_extrato";
+            stmt.executeQuery(extrato);
+            ResultSet resultSet = stmt.getResultSet();
+            String tudao = "";
+            while(resultSet.next()){  
+                tudao = tudao + "\nFundo:" + resultSet.getInt("fundo") + " - R$" + String.format("%.2f", resultSet.getDouble("saldo")) + " - (Data:" + resultSet.getDate("dtInicio") + " - (STATUS:" + resultSet.getInt("status") + ")";
+            }
+
+            con2.close();
+        return tudao;
+
+      }
 }

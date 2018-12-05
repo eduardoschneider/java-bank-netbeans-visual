@@ -68,28 +68,28 @@ public class telaDeExibirClientes extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Digite o CPF do alvo:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 210, 10));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 210, 10));
 
         txtNome.setBackground(new java.awt.Color(102, 0, 0));
         txtNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtNome.setToolTipText("");
         txtNome.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 270, 20));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 270, 20));
 
         txtCPF.setBackground(new java.awt.Color(102, 0, 0));
         txtCPF.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 20));
+        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 170, 20));
 
         txtDataNasc.setBackground(new java.awt.Color(102, 0, 0));
         txtDataNasc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtDataNasc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 270, 20));
+        getContentPane().add(txtDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 270, 20));
 
         txtLogin.setBackground(new java.awt.Color(102, 0, 0));
         txtLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        getContentPane().add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 270, 20));
+        getContentPane().add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 270, 20));
 
         cancelaCadastroButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelaCadastroButton.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -100,7 +100,7 @@ public class telaDeExibirClientes extends javax.swing.JFrame {
                 cancelaCadastroButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 270, -1));
+        getContentPane().add(cancelaCadastroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 270, -1));
 
         confirmaCadastroButton1.setBackground(new java.awt.Color(0, 153, 0));
         confirmaCadastroButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -116,10 +116,10 @@ public class telaDeExibirClientes extends javax.swing.JFrame {
                 confirmaCadastroButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(confirmaCadastroButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, 20));
+        getContentPane().add(confirmaCadastroButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/giphy.gif"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 190));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bgcrud.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

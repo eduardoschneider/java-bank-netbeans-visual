@@ -70,7 +70,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         btnCadastroConta = new javax.swing.JButton();
         btnAlterarConta = new javax.swing.JButton();
         btnAddInvestimento = new javax.swing.JButton();
-        btnPoupanca = new javax.swing.JButton();
         btnCdb = new javax.swing.JButton();
         btnExcluirCliente = new javax.swing.JButton();
         btnPesquisaCliente = new javax.swing.JButton();
@@ -119,7 +118,7 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         btnAddPoupanca.setBackground(new java.awt.Color(204, 255, 204));
         btnAddPoupanca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddPoupanca.setForeground(new java.awt.Color(0, 102, 51));
-        btnAddPoupanca.setText("+");
+        btnAddPoupanca.setText("Cadastrar Poupança");
         btnAddPoupanca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAddPoupancaMouseEntered(evt);
@@ -128,7 +127,12 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
                 btnAddPoupancaMouseExited(evt);
             }
         });
-        jPanel1.add(btnAddPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 50, 86));
+        btnAddPoupanca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddPoupancaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAddPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 300, 86));
 
         btnEXTRA.setBackground(new java.awt.Color(255, 255, 255));
         btnEXTRA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -253,19 +257,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(btnAddInvestimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 50, 86));
 
-        btnPoupanca.setBackground(new java.awt.Color(255, 255, 255));
-        btnPoupanca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnPoupanca.setText("Poupança");
-        btnPoupanca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPoupancaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPoupancaMouseExited(evt);
-            }
-        });
-        jPanel1.add(btnPoupanca, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 310, 86));
-
         btnCdb.setBackground(new java.awt.Color(255, 255, 255));
         btnCdb.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnCdb.setText("CDB");
@@ -275,6 +266,11 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnCdbMouseExited(evt);
+            }
+        });
+        btnCdb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCdbActionPerformed(evt);
             }
         });
         jPanel1.add(btnCdb, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 116, 120, 110));
@@ -341,6 +337,11 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnInvestimentosMouseExited(evt);
+            }
+        });
+        btnInvestimentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInvestimentosActionPerformed(evt);
             }
         });
         jPanel1.add(btnInvestimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 310, 86));
@@ -488,14 +489,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCdbMouseExited
 
-    private void btnPoupancaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPoupancaMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPoupancaMouseEntered
-
-    private void btnPoupancaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPoupancaMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPoupancaMouseExited
-
     private void btnPesquisaContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaContaMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPesquisaContaMouseEntered
@@ -558,7 +551,8 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddInvestimentoMouseExited
 
     private void btnAddInvestimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddInvestimentoActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        new telaDeCadastroFundo().setVisible(true);
     }//GEN-LAST:event_btnAddInvestimentoActionPerformed
 
     private void btnCadastroClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroClienteMouseClicked
@@ -646,6 +640,29 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         new telaDeCadastroCDB().setVisible(true);
     }//GEN-LAST:event_btnAddCdbActionPerformed
 
+    private void btnAddPoupancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPoupancaActionPerformed
+        this.setVisible(false);
+        new telaDeCadastroPoupanca().setVisible(true);
+    }//GEN-LAST:event_btnAddPoupancaActionPerformed
+
+    private void btnCdbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCdbActionPerformed
+        this.setVisible(false);
+        try {
+            new telaExibirCDB().setVisible(true);
+        } catch (InterruptedException | SQLException ex) {
+            Logger.getLogger(telaPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnCdbActionPerformed
+
+    private void btnInvestimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvestimentosActionPerformed
+        this.setVisible(false);
+        try {
+            new telaExibirFundo().setVisible(true);
+        } catch (InterruptedException | SQLException ex) {
+            Logger.getLogger(telaPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnInvestimentosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -666,7 +683,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnInvestimentos;
     private javax.swing.JButton btnPesquisaCliente;
     private javax.swing.JButton btnPesquisaConta;
-    private javax.swing.JButton btnPoupanca;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel fundo;
     private javax.swing.JLabel fundo1;

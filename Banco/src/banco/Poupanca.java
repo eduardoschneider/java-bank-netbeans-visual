@@ -296,5 +296,22 @@ public class Poupanca {
         return tudao;
     }
     
+    
+        public static void cadastrar(String cpfCliente) throws SQLException {
+            Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+            Statement stmt = (Statement)con2.createStatement();
+            
+            String achaCliente = "SELECT * FROM clientes WHERE cpf =" + cpfCliente;
+            ResultSet result = stmt.executeQuery(achaCliente);
+            int idCliente = 0;
+            while (result.next()){
+                idCliente = result.getInt("id");
+            }
+            
+            String insert = "INSERT INTO poupanca(cliente,saldo) VALUES ('" + idCliente + "', 0.0);";
+            stmt.execute(insert);
+            
+            con2.close();
+        }
  }
 

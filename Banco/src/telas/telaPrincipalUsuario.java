@@ -75,10 +75,10 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fundo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bank.png"))); // NOI18N
+        fundo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eye.png"))); // NOI18N
         fundo1.setAlignmentX(0.5F);
         fundo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(fundo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 150, 130));
+        getContentPane().add(fundo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 150, 150));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -174,11 +174,12 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 630, 10));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("____________________ Poupança __________________");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 212, 630, 40));
+        jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 630, 40));
 
         btnConsultarPoupanca.setBackground(new java.awt.Color(255, 255, 255));
         btnConsultarPoupanca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -364,8 +365,9 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 250, 110));
 
+        fundo.setForeground(new java.awt.Color(0, 0, 0));
         fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/112_hard.jpg"))); // NOI18N
-        jPanel1.add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 660, 460));
+        jPanel1.add(fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 660, 520));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 650, 480));
 

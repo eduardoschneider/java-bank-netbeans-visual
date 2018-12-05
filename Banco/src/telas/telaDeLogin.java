@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import org.jdesktop.swingx.prompt.PromptSupport;
 
 /**
  *
@@ -36,8 +36,9 @@ public class telaDeLogin extends javax.swing.JFrame {
         btnEntrar.setBorder(new RoundedBorder(15));
         btnEntrar.setForeground(Color.black);
         txtFocus.requestFocus();
+               
         ConnectionFactory con = new ConnectionFactory();
-        con.conectar();   
+        con.conectar();
     }
 
     /**
