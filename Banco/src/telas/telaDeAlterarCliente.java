@@ -89,7 +89,6 @@ public class telaDeAlterarCliente extends javax.swing.JFrame {
         getContentPane().add(txtDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 210, -1));
 
         txtLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtLogin.setForeground(new java.awt.Color(0, 0, 0));
         txtLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         getContentPane().add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 210, -1));
 

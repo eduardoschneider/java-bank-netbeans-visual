@@ -95,7 +95,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CONTA");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 90, 30));
@@ -113,7 +112,6 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         jPanel1.add(fundo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 50, 20, 20));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CLIENTE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 110, 30));
@@ -190,6 +188,11 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnAddCdbMouseExited(evt);
+            }
+        });
+        btnAddCdb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCdbActionPerformed(evt);
             }
         });
         jPanel1.add(btnAddCdb, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 116, 50, 110));
@@ -637,6 +640,11 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
         this.setVisible(false);
         new telaDeExibirConta().setVisible(true);
     }//GEN-LAST:event_btnPesquisaContaActionPerformed
+
+    private void btnAddCdbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCdbActionPerformed
+        this.setVisible(false);
+        new telaDeCadastroCDB().setVisible(true);
+    }//GEN-LAST:event_btnAddCdbActionPerformed
 
     /**
      * @param args the command line arguments

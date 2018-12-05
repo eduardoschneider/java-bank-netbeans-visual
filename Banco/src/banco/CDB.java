@@ -206,5 +206,16 @@ public class CDB {
            stmt5.execute(demolidor2);
            con2.close();
         }
+    
+    
+        public static void cadastrar(String nomeCdb, String vencimentoCDB, String porcentagem) throws SQLException {
+            Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/banco","root","");
+            Statement stmt = (Statement)con2.createStatement();
+            
+            String insert = "INSERT INTO cdb(nome,saldo,vencimento,porcentagem) VALUES ('" + nomeCdb + "', 0.0,"+ vencimentoCDB + "," + porcentagem + ");";
+            stmt.execute(insert);
+            
+            con2.close();
+        }
 
 }
