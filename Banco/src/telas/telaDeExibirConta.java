@@ -30,7 +30,7 @@ public class telaDeExibirConta extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //abre a tela no centro 
         
-        PromptSupport.setPrompt("CPF", txtCodigo);
+        PromptSupport.setPrompt("Codigo", txtCodigo);
         PromptSupport.setForeground(Color.white, txtCodigo);
         
         txtCliente.setBackground(new Color(0, 0, 0, 0));
