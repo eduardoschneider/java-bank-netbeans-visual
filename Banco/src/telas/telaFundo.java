@@ -71,20 +71,20 @@ public class telaFundo extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 70, 20));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 70, 20));
 
         txtFundo.setBackground(new java.awt.Color(236, 217, 205));
         txtFundo.setBorder(null);
         txtFundo.setForeground(new java.awt.Color(0, 0, 0));
         txtFundo.setText("1");
         txtFundo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 130, 20));
+        jPanel1.add(txtFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 130, 20));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Digite o código do Fundo:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 140, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 140, 20));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/11111card.jpg"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 244, 80, 40));
@@ -115,7 +115,7 @@ public class telaFundo extends javax.swing.JFrame {
                 confirmaDepositoButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(confirmaDepositoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 90, 20));
+        jPanel1.add(confirmaDepositoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 90, 20));
 
         jButton1.setBackground(new java.awt.Color(102, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -126,25 +126,25 @@ public class telaFundo extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 70, 20));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 70, 20));
 
         txtValor.setBackground(new java.awt.Color(236, 217, 205));
         txtValor.setBorder(null);
         txtValor.setForeground(new java.awt.Color(0, 0, 0));
         txtValor.setText("R$ 00,00");
         txtValor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPanel1.add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 140, 20));
+        jPanel1.add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 140, 20));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Digite o valor:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 80, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 80, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/11111.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 550));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 520));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -5,8 +5,6 @@
  */
 package banco;
 
-import java.math.BigDecimal;
-
 /**
  *
  * @author eduardo.schneider

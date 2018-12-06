@@ -14,9 +14,7 @@ import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -29,12 +27,10 @@ public class Poupanca {
     public static Poupanca logado = null;
     private String codigoPoupanca;
     private Cliente cliente;
-    private BigDecimal saldo;
 
-    public Poupanca(String idPoupanca, Cliente cliente, BigDecimal saldo) {
+    public Poupanca(String idPoupanca, Cliente cliente) {
         this.codigoPoupanca = idPoupanca;
         this.cliente = cliente;
-        this.saldo = saldo;
     }
 
     public Poupanca() {
@@ -55,10 +51,6 @@ public class Poupanca {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
-
-    public void setSaldo(BigDecimal saldo) {
-        this.saldo = saldo;
     }
 
     public static Poupanca checaExistenciaDePoupanca(Cliente c, List<Poupanca> poupancas) {
@@ -149,7 +141,7 @@ public class Poupanca {
         ResultSet resultSet = stmt.executeQuery(consulta);
         
         while (resultSet.next()){
-            Poupanca logado = new Poupanca(resultSet.getString("id"), cliente, new BigDecimal(resultSet.getDouble("saldo")));
+            Poupanca logado = new Poupanca(resultSet.getString("id"), cliente);
                 Poupanca.logado = logado;
             }
         

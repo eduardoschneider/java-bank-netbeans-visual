@@ -1,14 +1,12 @@
 package conexao;
 
-import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  *
- * @author Fausto Carvalho
+ * @author eduardo.schneider
  */
 public class ConnectionFactory {
 
