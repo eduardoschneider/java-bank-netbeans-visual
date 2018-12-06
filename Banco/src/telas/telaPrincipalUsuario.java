@@ -99,7 +99,7 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
 
         btnAvancarODia1.setBackground(new java.awt.Color(255, 255, 255));
         btnAvancarODia1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnAvancarODia1.setText("----- BOTÃO EXTRA -----");
+        btnAvancarODia1.setEnabled(false);
         btnAvancarODia1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAvancarODia1MouseEntered(evt);
@@ -320,7 +320,7 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
 
         btnAvancarODia.setBackground(new java.awt.Color(255, 255, 255));
         btnAvancarODia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnAvancarODia.setText("----- BOTÃO EXTRA -----");
+        btnAvancarODia.setEnabled(false);
         btnAvancarODia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAvancarODiaMouseEntered(evt);
@@ -442,11 +442,13 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void btnSaqueMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaqueMouseEntered
-        // TODO add your handling code here:
+        btnSaque.setBackground(Color.black);
+        btnSaque.setForeground(Color.white);
     }//GEN-LAST:event_btnSaqueMouseEntered
 
     private void btnSaqueMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaqueMouseExited
-        // TODO add your handling code here:
+        btnSaque.setBackground(Color.white);
+        btnSaque.setForeground(Color.black);
     }//GEN-LAST:event_btnSaqueMouseExited
 
     private void btnSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaqueActionPerformed
@@ -454,27 +456,33 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaqueActionPerformed
 
     private void btnCdbMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCdbMouseEntered
-        // TODO add your handling code here:
+        btnCdb.setBackground(Color.black);
+        btnCdb.setForeground(Color.white);
     }//GEN-LAST:event_btnCdbMouseEntered
 
     private void btnCdbMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCdbMouseExited
-        // TODO add your handling code here:
+        btnCdb.setBackground(Color.white);
+        btnCdb.setForeground(Color.black);
     }//GEN-LAST:event_btnCdbMouseExited
 
     private void btnSacarPoupancaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSacarPoupancaMouseEntered
-        // TODO add your handling code here:
+        btnSacarPoupanca.setBackground(Color.black);
+        btnSacarPoupanca.setForeground(Color.white);
     }//GEN-LAST:event_btnSacarPoupancaMouseEntered
 
     private void btnSacarPoupancaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSacarPoupancaMouseExited
-        // TODO add your handling code here:
+        btnSacarPoupanca.setBackground(Color.white);
+        btnSacarPoupanca.setForeground(Color.black);
     }//GEN-LAST:event_btnSacarPoupancaMouseExited
 
     private void btnPagamentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagamentoMouseEntered
-        // TODO add your handling code here:
+        btnPagamento.setBackground(Color.black);
+        btnPagamento.setForeground(Color.white);
     }//GEN-LAST:event_btnPagamentoMouseEntered
 
     private void btnPagamentoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagamentoMouseExited
-        // TODO add your handling code here:
+        btnPagamento.setBackground(Color.white);
+        btnPagamento.setForeground(Color.black);
     }//GEN-LAST:event_btnPagamentoMouseExited
 
     private void btnPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagamentoActionPerformed
@@ -482,27 +490,33 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPagamentoActionPerformed
 
     private void btnSaldoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaldoMouseEntered
-        // TODO add your handling code here:
+        btnSaldo.setBackground(Color.black);
+        btnSaldo.setForeground(Color.white);
     }//GEN-LAST:event_btnSaldoMouseEntered
 
     private void btnSaldoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaldoMouseExited
-        // TODO add your handling code here:
+        btnSaldo.setBackground(Color.white);
+        btnSaldo.setForeground(Color.black);
     }//GEN-LAST:event_btnSaldoMouseExited
 
     private void btnAvancarODia1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvancarODia1MouseEntered
-        // TODO add your handling code here:
+        btnAvancarODia1.setBackground(Color.black);
+        btnAvancarODia1.setForeground(Color.white);
     }//GEN-LAST:event_btnAvancarODia1MouseEntered
 
     private void btnAvancarODia1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvancarODia1MouseExited
-        // TODO add your handling code here:
+        btnAvancarODia1.setBackground(Color.white);
+        btnAvancarODia1.setForeground(Color.black);
     }//GEN-LAST:event_btnAvancarODia1MouseExited
 
     private void btnExtratoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExtratoMouseEntered
-        // TODO add your handling code here:
+        btnExtrato.setBackground(Color.black);
+        btnExtrato.setForeground(Color.white);
     }//GEN-LAST:event_btnExtratoMouseEntered
 
     private void btnExtratoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExtratoMouseExited
-        // TODO add your handling code here:
+        btnExtrato.setBackground(Color.white);
+        btnExtrato.setForeground(Color.black);
     }//GEN-LAST:event_btnExtratoMouseExited
 
     private void btnCdbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCdbActionPerformed
@@ -515,19 +529,23 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCdbActionPerformed
 
     private void btnDepositarPoupancaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDepositarPoupancaMouseEntered
-        // TODO add your handling code here:
+        btnDepositarPoupanca.setBackground(Color.black);
+        btnDepositarPoupanca.setForeground(Color.white);
     }//GEN-LAST:event_btnDepositarPoupancaMouseEntered
 
     private void btnDepositarPoupancaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDepositarPoupancaMouseExited
-        // TODO add your handling code here:
+        btnDepositarPoupanca.setBackground(Color.white);
+        btnDepositarPoupanca.setForeground(Color.black);
     }//GEN-LAST:event_btnDepositarPoupancaMouseExited
 
     private void btnConsultarPoupancaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarPoupancaMouseEntered
-        // TODO add your handling code here:
+        btnConsultarPoupanca.setBackground(Color.black);
+        btnConsultarPoupanca.setForeground(Color.white);
     }//GEN-LAST:event_btnConsultarPoupancaMouseEntered
 
     private void btnConsultarPoupancaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarPoupancaMouseExited
-        // TODO add your handling code here:
+        btnConsultarPoupanca.setBackground(Color.white);
+        btnConsultarPoupanca.setForeground(Color.black);
     }//GEN-LAST:event_btnConsultarPoupancaMouseExited
 
     private void btnInvestimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvestimentosActionPerformed

@@ -298,7 +298,6 @@ public class Conta {
         while (resultSet.next()){
             Conta logado = new Conta(resultSet.getInt("id"), resultSet.getString("codigo"), cliente.getIdCliente(), resultSet.getDouble("saldo"));
                 Conta.logado = logado;
-                Poupanca.logar(cliente);
             }
         
         con2.close();

@@ -303,6 +303,17 @@ public class Poupanca {
             String insert = "INSERT INTO poupanca(cliente,saldo) VALUES ('" + idCliente + "', 0.0);";
             stmt.execute(insert);
             
+            String pegaID = "SELECT * FROM poupanca WHERE cliente =" + idCliente;
+            ResultSet result2 = stmt.executeQuery(pegaID);
+            int idPoupanca = 0;
+            while (result2.next()){
+                idPoupanca = result2.getInt("id");
+            }
+            
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,"O código da sua poupança é:" + idPoupanca + ", não se esqueça dele pois será necessário para operações futuras.",
+            "ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);  
+            
             con2.close();
         }
  }

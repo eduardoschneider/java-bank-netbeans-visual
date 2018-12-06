@@ -97,6 +97,7 @@ public class Cliente {
         if ((a.equals(login)) && (b.equals(senha))){
             Cliente.logado = logado;
             Conta.logar(logado);
+            Poupanca.logar(logado);
             con2.close();
             return true;
         }
@@ -170,6 +171,7 @@ public class Cliente {
 
         while (resultSet.next()){
             String delete3 = "DELETE FROM clientes WHERE id = '" + resultSet.getInt("id") + "'";
+            System.out.println(delete3);
             stmt.execute(delete3);            
             resultSet.close();
             break;

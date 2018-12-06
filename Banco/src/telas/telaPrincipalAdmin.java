@@ -458,43 +458,53 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void btnExcluirClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirClienteMouseEntered
-        // TODO add your handling code here:
+        btnExcluirCliente.setBackground(Color.black);
+        btnExcluirCliente.setForeground(Color.white);
     }//GEN-LAST:event_btnExcluirClienteMouseEntered
 
     private void btnExcluirClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirClienteMouseExited
-        // TODO add your handling code here:
+        btnExcluirCliente.setBackground(Color.white);
+        btnExcluirCliente.setForeground(Color.black);
     }//GEN-LAST:event_btnExcluirClienteMouseExited
 
     private void btnPesquisaClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClienteMouseEntered
-        // TODO add your handling code here:
+        btnPesquisaCliente.setBackground(Color.black);
+        btnPesquisaCliente.setForeground(Color.white);
     }//GEN-LAST:event_btnPesquisaClienteMouseEntered
 
     private void btnPesquisaClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaClienteMouseExited
-        // TODO add your handling code here:
+        btnPesquisaCliente.setBackground(Color.white);
+        btnPesquisaCliente.setForeground(Color.black);
     }//GEN-LAST:event_btnPesquisaClienteMouseExited
 
     private void btnCdbMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCdbMouseEntered
-        // TODO add your handling code here:
+        btnCdb.setBackground(Color.black);
+        btnCdb.setForeground(Color.white);
     }//GEN-LAST:event_btnCdbMouseEntered
 
     private void btnCdbMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCdbMouseExited
-        // TODO add your handling code here:
+        btnCdb.setBackground(Color.white);
+        btnCdb.setForeground(Color.black);
     }//GEN-LAST:event_btnCdbMouseExited
 
     private void btnPesquisaContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaContaMouseEntered
-        // TODO add your handling code here:
+        btnPesquisaConta.setBackground(Color.black);
+        btnPesquisaConta.setForeground(Color.white);
     }//GEN-LAST:event_btnPesquisaContaMouseEntered
 
     private void btnPesquisaContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisaContaMouseExited
-        // TODO add your handling code here:
+        btnPesquisaConta.setBackground(Color.white);
+        btnPesquisaConta.setForeground(Color.black);
     }//GEN-LAST:event_btnPesquisaContaMouseExited
 
     private void btnExcluirContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirContaMouseEntered
-        // TODO add your handling code here:
+        btnExcluirConta.setBackground(Color.black);
+        btnExcluirConta.setForeground(Color.white);
     }//GEN-LAST:event_btnExcluirContaMouseEntered
 
     private void btnExcluirContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirContaMouseExited
-        // TODO add your handling code here:
+        btnExcluirConta.setBackground(Color.white);
+        btnExcluirConta.setForeground(Color.black);
     }//GEN-LAST:event_btnExcluirContaMouseExited
 
     private void btnExcluirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirContaActionPerformed
@@ -503,11 +513,13 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirContaActionPerformed
 
     private void btnAlterarContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarContaMouseEntered
-        // TODO add your handling code here:
+        btnAlterarConta.setBackground(Color.black);
+        btnAlterarConta.setForeground(Color.white);
     }//GEN-LAST:event_btnAlterarContaMouseEntered
 
     private void btnAlterarContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarContaMouseExited
-        // TODO add your handling code here:
+        btnAlterarConta.setBackground(Color.white);
+        btnAlterarConta.setForeground(Color.black);
     }//GEN-LAST:event_btnAlterarContaMouseExited
 
     private void btnEXTRAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEXTRAMouseEntered
@@ -610,11 +622,13 @@ public class telaPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastroContaActionPerformed
 
     private void btnCadastroContaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroContaMouseExited
-        // TODO add your handling code here:
+        btnCadastroConta.setBackground(Color.white);
+        btnCadastroConta.setForeground(Color.black);
     }//GEN-LAST:event_btnCadastroContaMouseExited
 
     private void btnCadastroContaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroContaMouseEntered
-        // TODO add your handling code here:
+        btnCadastroConta.setBackground(Color.black);
+        btnCadastroConta.setForeground(Color.white);
     }//GEN-LAST:event_btnCadastroContaMouseEntered
 
     private void btnPesquisaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaClienteActionPerformed
