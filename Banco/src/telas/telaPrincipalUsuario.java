@@ -37,6 +37,17 @@ public class telaPrincipalUsuario extends javax.swing.JFrame {
             poup1.setVisible(false);
             poup2.setVisible(false);
         }
+        
+        if (Conta.logado == null){
+            btnDeposito.setEnabled(false);
+            btnExtrato.setEnabled(false);
+            btnPagamento.setEnabled(false);
+            btnInvestimentos.setEnabled(false);
+            btnCdb.setEnabled(false);
+            btnSaldo.setEnabled(false);
+            btnSaque.setEnabled(false);
+            btnTransferencia.setEnabled(false);
+        }
     }
 
     /**

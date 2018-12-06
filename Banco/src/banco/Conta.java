@@ -314,14 +314,19 @@ public class Conta {
         while (resultSet.next()){
             encontrado = new Cliente(resultSet.getInt("id"),resultSet.getString("nome"),resultSet.getString("cpf"),resultSet.getDate("dataNasc"));
         }
+        if (encontrado != null){
+            String update3 = "INSERT INTO conta(codigo,cliente,saldo) VALUES ('" + codigo + "','" + encontrado.getIdCliente() + "','" + saldo + "');";
+            stmt.execute(update3);
 
-        String update3 = "INSERT INTO conta(codigo,cliente,saldo) VALUES ('" + codigo + "','" + encontrado.getIdCliente() + "','" + saldo + "');";
-        stmt.execute(update3);
-
-        JFrame frame = new JFrame("");
-        JOptionPane.showMessageDialog(frame,"Conta cadastrada com sucesso.",
-        "Yay!",JOptionPane.INFORMATION_MESSAGE);    
-        
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,"Conta cadastrada com sucesso.",
+            "Yay!",JOptionPane.INFORMATION_MESSAGE);    
+        } else 
+        {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame,"Cliente não encontrado.",
+            "ERRO",JOptionPane.INFORMATION_MESSAGE); 
+        }
         con2.close();
     }
     
